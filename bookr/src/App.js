@@ -6,6 +6,7 @@ import * as reducers from './state/reducers';
 
 import Counter from './components/Counter';
 import BookList from './components/homePage/BookList';
+import BookPage from "./components/bookPage/BookPage";
 
 const rootReducer = combineReducers({
   count: reducers.countReducer,
@@ -23,7 +24,8 @@ function App() {
     <Provider store={store}>
       <div className="App">
         {/* <Counter /> */}
-        <BookList />
+        {/* <BookList /> */}
+        <BookPage id={1} /> {/* id accessed from history object once router is set up? */}
       </div>
     </Provider>
   );

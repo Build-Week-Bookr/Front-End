@@ -19,7 +19,7 @@ export function BookList(props) {
     return (
         <StyledBookList>
             {books.map(book => (
-                <BookCard id={book.id} key={book.id} />
+                <BookCard book={book} key={book.id} />
             ))}
         </StyledBookList>
     )
