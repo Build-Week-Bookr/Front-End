@@ -9,12 +9,18 @@ const StyledBookList = styled.div`
     height: 100vh;
     background: red;
     padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
 `;
 
 export function BookList(props) {
+    const { books } = props;
+
     return (
         <StyledBookList>
-            <BookCard />
+            {books.map(book => (
+                <BookCard id={book.id} key={book.id} />
+            ))}
         </StyledBookList>
     )
 }

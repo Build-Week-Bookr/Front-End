@@ -1,13 +1,11 @@
 import * as types from '../state/actionTypes';
 
+// Counter test:
 export function incrementCount() {
-    return {
-        type: types.INCREMENT
-    }
+    return { type: types.INCREMENT }
+}
+export function decrementCount() {
+    return { type: types.DECREMENT }
 }
 
-export function decrementCount() {
-    return {
-        type: types.DECREMENT
-    }
-}
+// Books:
