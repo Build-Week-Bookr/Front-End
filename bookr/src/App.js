@@ -4,6 +4,7 @@ import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import Counter from './components/Counter';
 import * as reducers from './state/reducers';
+import { BookList } from './components/homePage/BookList';
 
 
 const rootReducer = combineReducers({
@@ -19,7 +20,8 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <Counter />
+        {/* <Counter /> */}
+        <BookList />
       </div>
     </Provider>
   );
