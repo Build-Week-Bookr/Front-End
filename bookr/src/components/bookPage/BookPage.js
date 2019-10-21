@@ -10,7 +10,7 @@ const StyledBookPage = styled.div`
 `;
 
 export default function BookPage(props) {
-    const { id } = props;
+    const id = parseInt(props.match.params.id);
 
     return (
         <StyledBookPage>

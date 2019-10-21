@@ -11,7 +11,7 @@ const StyledHeaderCard = styled.div`
 
 export function HeaderCard(props) {
     const { books } = props;
-    const book = books.find(book => book.id = props.id);
+    const book = books.find(book => book.id === props.id);
 
     return (
         <StyledHeaderCard>

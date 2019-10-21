@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../state/actionCreators";
 import styled from "styled-components";
+import uuid from "uuid";
 
 import ReviewCard from "./ReviewCard";
 
@@ -12,10 +13,11 @@ const StyledReviewList = styled.div`
 
 export function ReviewList(props) {
     const { reviews } = props;
+
     return (
         <StyledReviewList>
             {reviews.map(reviewObj => (
-                <ReviewCard reviewObj={reviewObj} />
+                <ReviewCard reviewObj={reviewObj} key={uuid()} />
             ))}
         </StyledReviewList>
     )

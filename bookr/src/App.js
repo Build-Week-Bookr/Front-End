@@ -3,6 +3,8 @@ import './App.css';
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import * as reducers from './state/reducers';
+import { Route, NavLink } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
 
 import Counter from './components/Counter';
 import BookList from './components/homePage/BookList';
@@ -24,8 +26,12 @@ function App() {
     <Provider store={store}>
       <div className="App">
         {/* <Counter /> */}
-        {/* <BookList /> */}
-        <BookPage id={1} /> {/* id accessed from history object once router is set up? */}
+        <NavLink to="/books">Books</NavLink>
+        <br/>
+        <NavLink to="/book/1">Book Page 1</NavLink>
+        <NavLink to="book/2">Book Page 2</NavLink>
+        <Route path="/books" render={props => PrivateRoute(BookList, props)} />
+        <Route path="/book/:id" render={props => PrivateRoute(BookPage, props)} />
       </div>
     </Provider>
   );
