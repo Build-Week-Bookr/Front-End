@@ -1,49 +1,11 @@
 import * as types from '../state/actionTypes';
 
-// Book State:
-const initialBooks = [
-    {
-        id: 1,
-        title: "The Beginning of Infinity",
-        author: "David Deutsch",
-        publisher: "Viking",
-    },
-    {
-        id: 2,
-        title: "The Blank Slate",
-        author: "Stephen Pinker",
-        publisher: "Penguin",
-    }
-];
-export function booksReducer(books = initialBooks, action) {
-    switch(action.type) {
-        default:
-            return books;
-    }
-}
-
-const initialReviews = [
-    {
-        reviewer: "Carnun",
-        review: "Great book! 10/10 would read again."
-    },
-    {
-        reviewer: "Francis",
-        review: "Loved it! Made me think."
-    }
-];
-export function reviewsReducer(reviews = initialReviews, action) {
-    switch(action.type) {
-        default:
-            return reviews;
-    }
-}
+// Form state:
 const initialFormState = {
 	username: '',
 	password: ''
 }
 
-// Form state:
 export function signUpReducer(state = initialFormState, action) {
 	switch (action.type) {
 		case types.ON_INPUT_CHANGE:
@@ -78,4 +40,47 @@ export function logInReducer(state = initialFormState, action) {
 			default:
 				return state;
 	}
+}
+
+// Book State:
+// const initialBooks = [
+//     {
+//         id: 1,
+//         title: "The Beginning of Infinity",
+//         author: "David Deutsch",
+//         publisher: "Viking",
+//     },
+//     {
+//         id: 2,
+//         title: "The Blank Slate",
+//         author: "Stephen Pinker",
+//         publisher: "Penguin",
+//     }
+// ];
+const initialBooks = [];
+export function booksReducer(books = initialBooks, action) {
+    switch(action.type) {
+		case types.FETCH_BOOKS:
+			return action.payload;
+        default:
+            return books;
+    }
+}
+
+// const initialReviews = [
+//     {
+//         reviewer: "Carnun",
+//         review: "Great book! 10/10 would read again."
+//     },
+//     {
+//         reviewer: "Francis",
+//         review: "Loved it! Made me think."
+//     }
+// ];
+const initialReviews = [];
+export function reviewsReducer(reviews = initialReviews, action) {
+    switch(action.type) {
+        default:
+            return reviews;
+    }
 }

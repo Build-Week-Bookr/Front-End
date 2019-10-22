@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actionCreators from "../../state/actionCreators";
@@ -17,13 +17,21 @@ const StyledBookList = styled.div`
 export function BookList(props) {
     const { books } = props;
 
+    useEffect(() => {
+        props.fetchBooks();
+    }, []);
+
     return (
-        <StyledBookList>
-            <NavLink to="/">Home</NavLink>
-            {books.map(book => (
-                <BookCard book={book} key={book.id} />
-            ))}
-        </StyledBookList>
+        <>
+            {books.length === 0 && <p>loading books...</p>}
+            {books.length !== 0 &&
+            <StyledBookList>
+                <NavLink to="/">Home</NavLink>
+                {books.map(book => (
+                    <BookCard book={book} key={book.id} />
+                ))}
+            </StyledBookList>}
+        </>
     )
 }
 

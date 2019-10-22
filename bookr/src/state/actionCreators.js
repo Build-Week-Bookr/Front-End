@@ -1,6 +1,8 @@
 import * as types from '../state/actionTypes';
 import axios from 'axios';
+import axiosWithAuth from "../axios";
 
+// Forms:
 export function signUpFormChange(target) {
 	return {
 		type: types.ON_INPUT_CHANGE,
@@ -48,7 +50,7 @@ const logInUser = user => {
 	}
 }
 export const logIn = logUser => dispatch => {
-	axios.post('https://bookr-build-backend.herokuapp.com/api/auth/register', logUser)
+	axios.post('https://bookr-build-backend.herokuapp.com/api/auth/login', logUser)
 	.then(res => {
 		console.log('submitLogin', res)
 		console.log('Log in user', logUser)
@@ -58,4 +60,19 @@ export const logIn = logUser => dispatch => {
 	.catch(error => {
 		console.log('Login Error', error)
 	})
+}
+
+// Books:
+export const fetchBooks = () => dispatch => {
+	axiosWithAuth().get("https://bookr-build-backend.herokuapp.com/api/books")
+		.then(res => {
+			debugger
+			dispatch({ 
+				type: types.FETCH_BOOKS,
+				payload: res.data 
+			});
+		})
+		.catch(err => {
+			debugger
+		});
 }
