@@ -17,10 +17,11 @@ const StyledBookList = styled.div`
 `;
 
 export function BookList(props) {
-    const { books, fetchBooks, clearReviews } = props;
+    const { books, fetchBooks, clearBook, clearReviews } = props;
 
     useEffect(() => {
         fetchBooks(props.history);
+        clearBook();
         clearReviews();
     }, []);
 

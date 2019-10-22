@@ -58,6 +58,8 @@ export function bookReducer(book = initialBook, action) {
 	switch(action.type) {
 		case types.FETCH_BOOK:
 			return action.payload;
+		case types.CLEAR_BOOK:
+			return null;
 		default:
 			return book;
 	}

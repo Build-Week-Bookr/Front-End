@@ -94,6 +94,9 @@ export const fetchBook = id => dispatch => {
 			alert(err.message);
 		});
 };
+export const clearBook = () => {
+	return { type: types.CLEAR_BOOK }
+};
 
 export const fetchReviews = id => dispatch => {
 	axiosWithAuth().get(`https://bookr-build-backend.herokuapp.com/api/reviews/book/${id}`)
