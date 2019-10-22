@@ -7,11 +7,12 @@ import BookCard from "./BookCard";
 
 const StyledBookList = styled.div`
     width: 100%;
-    min-height: 100vw;
+    min-height: 100vh;
     background: #b3b3b3;
     padding: 2rem;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     flex-wrap: wrap;
 `;
 

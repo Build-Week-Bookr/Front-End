@@ -7,11 +7,7 @@ const StyledBookCard = styled.div`
     height: 20rem;
     background: #F0F0F0;
     margin: 1rem;
-    /* padding: 1rem; */
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     .text-box {
         display: flex;
@@ -21,7 +17,6 @@ const StyledBookCard = styled.div`
         height: 100%;
         width: 100%;
         padding: 1rem;
-        overflow: hidden;
 
         h4 {
             margin-bottom: 1rem;
