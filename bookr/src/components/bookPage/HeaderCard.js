@@ -16,6 +16,9 @@ const StyledHeaderCard = styled.div`
     h4 {
         margin-bottom: 0.5rem;
     }
+    h5 {
+        margin-top: 2rem;
+    }
 `;
 
 export function HeaderCard(props) {
@@ -27,7 +30,7 @@ export function HeaderCard(props) {
 
     return (
         <StyledHeaderCard>
-            {(!book && <h2>Loading Book...</h2>) ||
+            {(!book && <h5>Loading Book...</h5>) ||
                 <>
                     <h3>{book.title}</h3>
                     <h4>{book.author}</h4>

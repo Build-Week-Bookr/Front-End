@@ -19,6 +19,9 @@ const StyledReviewList = styled.div`
         margin-bottom: 2rem;
         text-decoration: underline;
     }
+    h5 {
+        margin-bottom: 1rem;
+    }
 `;
 
 export function ReviewList(props) {
