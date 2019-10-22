@@ -11,6 +11,7 @@ import LogIn from './components/logIn&signUp/LogIn';
 import SignUp from './components/logIn&signUp/SignUp';
 import BookList from './components/homePage/BookList';
 import BookPage from "./components/bookPage/BookPage";
+import { sign } from 'crypto';
 
 const rootReducer = combineReducers({
   books: reducers.booksReducer,
@@ -33,7 +34,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Route exact path="/" component={LogIn} />
-        <SignUp />
+        <Route path="/signup" component={SignUp} />
         <Route path="/books" render={props => PrivateRoute(BookList, props)} />
         <Route path="/book/:id" render={props => PrivateRoute(BookPage, props)} />
       </div>
