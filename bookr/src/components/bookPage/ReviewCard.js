@@ -10,8 +10,7 @@ export default function ReviewCard(props) {
 
     return (
         <StyledReviewCard>
-            <p>{reviewObj.review}</p>
-            <h6>{reviewObj.reviewer}</h6>
+            <p>{reviewObj.contents}</p>
         </StyledReviewCard>
     )
 }

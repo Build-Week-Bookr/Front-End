@@ -15,9 +15,9 @@ export default function BookPage(props) {
 
     return (
         <StyledBookPage>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/books">Back</NavLink><br/>
             <HeaderCard id={id} />
-            <ReviewList />
+            <ReviewList id={id}/>
         </StyledBookPage>
     )
 }

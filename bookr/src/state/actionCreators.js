@@ -63,16 +63,40 @@ export const logIn = logUser => dispatch => {
 }
 
 // Books:
-export const fetchBooks = () => dispatch => {
+export const fetchBooks = history => dispatch => {
 	axiosWithAuth().get("https://bookr-build-backend.herokuapp.com/api/books")
 		.then(res => {
-			debugger
+			const books = res.data;
 			dispatch({ 
 				type: types.FETCH_BOOKS,
-				payload: res.data 
+				payload: books, 
 			});
 		})
 		.catch(err => {
-			debugger
+			if (err.response.status === 401) {
+				alert("Your session has expired. Please log back in.");
+				history.push("/");
+			} else {
+				alert(err.message);
+			}
 		});
-}
+};
+
+export const fetchReviews = id => dispatch => {
+	axiosWithAuth().get(`https://bookr-build-backend.herokuapp.com/api/reviews/book/${id}`)
+		.then(res => {
+			const reviews = res.data;
+			dispatch({
+				type: types.FETCH_REVIEWS,
+				payload: reviews,
+			});
+		})
+		.catch(err => {
+			if (err.response.status === 404) {
+				dispatch({
+					type: types.FETCH_REVIEWS,
+					payload: [],
+				});
+			}
+		});
+};

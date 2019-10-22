@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../state/actionCreators";
 import styled from "styled-components";
@@ -12,14 +12,22 @@ const StyledReviewList = styled.div`
 `;
 
 export function ReviewList(props) {
-    const { reviews } = props;
+    const { reviews, id, fetchReviews } = props;
+
+    useEffect(() => {
+        fetchReviews(id);
+    }, []);
 
     return (
-        <StyledReviewList>
-            {reviews.map(reviewObj => (
-                <ReviewCard reviewObj={reviewObj} key={uuid()} />
-            ))}
-        </StyledReviewList>
+        <>
+            {reviews.length === 0 && <p>loading reviews...</p>}
+            {reviews.length !== 0 && 
+                <StyledReviewList>
+                    {reviews.map(reviewObj => (
+                        <ReviewCard reviewObj={reviewObj} key={uuid()} />
+                    ))}
+                </StyledReviewList>}
+        </>
     )
 }
 

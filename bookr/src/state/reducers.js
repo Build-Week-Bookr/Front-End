@@ -80,6 +80,8 @@ export function booksReducer(books = initialBooks, action) {
 const initialReviews = [];
 export function reviewsReducer(reviews = initialReviews, action) {
     switch(action.type) {
+		case types.FETCH_REVIEWS:
+			return action.payload;
         default:
             return reviews;
     }

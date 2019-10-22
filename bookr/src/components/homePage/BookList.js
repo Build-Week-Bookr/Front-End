@@ -15,22 +15,22 @@ const StyledBookList = styled.div`
 `;
 
 export function BookList(props) {
-    const { books } = props;
+    const { books, fetchBooks } = props;
 
     useEffect(() => {
-        props.fetchBooks();
+        fetchBooks(props.history);
     }, []);
 
     return (
         <>
             {books.length === 0 && <p>loading books...</p>}
             {books.length !== 0 &&
-            <StyledBookList>
-                <NavLink to="/">Home</NavLink>
-                {books.map(book => (
-                    <BookCard book={book} key={book.id} />
-                ))}
-            </StyledBookList>}
+                <StyledBookList>
+                    <NavLink to="/">Home</NavLink>
+                    {books.map(book => (
+                        <BookCard book={book} key={book.id} />
+                    ))}
+                </StyledBookList>}
         </>
     )
 }
