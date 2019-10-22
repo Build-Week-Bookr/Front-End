@@ -74,3 +74,13 @@ export function reviewsReducer(reviews = initialReviews, action) {
             return reviews;
     }
 }
+
+const initialUser = null;
+export function userReducer(user = initialUser, action) {
+	switch(action.type) {
+		case types.FETCH_USER:
+			return action.payload;
+		default:
+			return user;
+	}
+}

@@ -116,3 +116,16 @@ export const fetchReviews = id => dispatch => {
 export const clearReviews = () => {
 	return { type: types.CLEAR_REVIEWS }
 }
+
+export const fetchUser = id => dispatch => {
+	axiosWithAuth().get(`https://bookr-build-backend.herokuapp.com/api/users/${id}`)
+		.then(res => {
+			dispatch({
+				type: types.FETCH_USER,
+				payload: res.data,
+			});
+		})
+		.catch(err => {
+			debugger
+		})
+};

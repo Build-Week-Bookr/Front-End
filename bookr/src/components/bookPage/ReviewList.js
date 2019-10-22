@@ -8,14 +8,16 @@ import ReviewCard from "./ReviewCard";
 
 const StyledReviewList = styled.div`
     min-height: 20%;
-    background: green;
+    background: #F0F0F0;
+    border-radius: 10px;
+    padding: 1rem;
 `;
 
 export function ReviewList(props) {
-    const { reviews, id, fetchReviews } = props;
+    const { reviews, bookId, fetchReviews } = props;
 
     useEffect(() => {
-        fetchReviews(id);
+        fetchReviews(bookId);
     }, []);
 
     return (

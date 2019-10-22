@@ -7,4 +7,5 @@ export const POST_LOGIN_DATA = 'POST_LOGIN_DATA';
 export const FETCH_BOOKS = "FETCH_BOOKS";
 export const FETCH_BOOK = "FETCH_BOOK";
 export const FETCH_REVIEWS = "FETCH_REVIEWS";
-export const CLEAR_REVIEWS = "CLEAR_REVIEWS"; //////
+export const CLEAR_REVIEWS = "CLEAR_REVIEWS";
+export const FETCH_USER = "FETCH_USER";

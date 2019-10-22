@@ -5,15 +5,24 @@ import styled from "styled-components";
 
 const StyledHeaderCard = styled.div`
     height: 20rem;
-    background: green;
+    background: #F0F0F0;
     margin-bottom: 1rem;
+    border-radius: 10px;
+    padding: 1rem;
+
+    h3 {
+        margin-bottom: 1rem;
+    }
+    h4 {
+        margin-bottom: 0.5rem;
+    }
 `;
 
 export function HeaderCard(props) {
-    const { id, book, fetchBook } = props;
+    const { bookId, book, fetchBook } = props;
     
     useEffect(() => {
-        fetchBook(id);
+        fetchBook(bookId);
     }, []);
 
     return (

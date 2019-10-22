@@ -16,6 +16,7 @@ const rootReducer = combineReducers({
   books: reducers.booksReducer,
   book: reducers.bookReducer,
   reviews: reducers.reviewsReducer,
+  user: reducers.userReducer,
   signUpValues: reducers.signUpReducer,
   logInValues: reducers.logInReducer
 })
