@@ -37,7 +37,7 @@ export function reviewsReducer(reviews = initialReviews, action) {
         default:
             return reviews;
     }
-
+}
 const initialFormState = {
 	username: '',
 	password: ''
