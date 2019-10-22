@@ -33,7 +33,6 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Route exact path="/" component={LogIn} />
-        <SignUp />
         <Route path="/books" render={props => PrivateRoute(BookList, props)} />
         <Route path="/book/:id" render={props => PrivateRoute(BookPage, props)} />
       </div>
