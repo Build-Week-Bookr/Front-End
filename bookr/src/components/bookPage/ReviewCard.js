@@ -4,7 +4,13 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../state/actionCreators";
 
 const StyledReviewCard = styled.div`
-    background: red;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+
+    p {
+        margin-bottom: 0.5rem;
+    }
 `;
 
 export function ReviewCard(props) {
@@ -21,8 +27,8 @@ export function ReviewCard(props) {
         <StyledReviewCard>
             {(!user && <h6>...</h6>) ||
                 <>
-                    <p>{reviewObj.contents}</p>
-                    <p>{user.username}</p>
+                    <p>"{reviewObj.contents}"</p>
+                    <h6>— {user.username}</h6>
                 </>
             }
         </StyledReviewCard>
