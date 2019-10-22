@@ -26,10 +26,14 @@ function App() {
     <Provider store={store}>
       <div className="App">
         {/* <Counter /> */}
-        <NavLink to="/books">Books</NavLink>
-        <br/>
-        <NavLink to="/book/1">Book Page 1</NavLink>
-        <NavLink to="book/2">Book Page 2</NavLink>
+        <Route exact path="/" render={() => (
+          <>
+            <NavLink to="/books">Books</NavLink>
+            <br />
+            <NavLink to="/book/1">Book Page 1</NavLink>
+            <NavLink to="book/2">Book Page 2</NavLink>
+          </>
+        )} />
         <Route path="/books" render={props => PrivateRoute(BookList, props)} />
         <Route path="/book/:id" render={props => PrivateRoute(BookPage, props)} />
       </div>

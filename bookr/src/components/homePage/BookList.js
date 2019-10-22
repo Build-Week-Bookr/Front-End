@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actionCreators from "../../state/actionCreators";
+import { NavLink } from "react-router-dom";
 
 import BookCard from "./BookCard";
 
@@ -18,6 +19,7 @@ export function BookList(props) {
 
     return (
         <StyledBookList>
+            <NavLink to="/">Home</NavLink>
             {books.map(book => (
                 <BookCard book={book} key={book.id} />
             ))}
