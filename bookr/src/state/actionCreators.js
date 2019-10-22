@@ -81,6 +81,19 @@ export const fetchBooks = history => dispatch => {
 			}
 		});
 };
+export const fetchBook = id => dispatch => {
+	axiosWithAuth().get(`https://bookr-build-backend.herokuapp.com/api/books/${id}`)
+		.then(res => {
+			const book = res.data;
+			dispatch({
+				type: types.FETCH_BOOK,
+				payload: book,
+			})
+		})
+		.catch(err => {
+			alert(err.message);
+		});
+};
 
 export const fetchReviews = id => dispatch => {
 	axiosWithAuth().get(`https://bookr-build-backend.herokuapp.com/api/reviews/book/${id}`)
@@ -93,7 +106,6 @@ export const fetchReviews = id => dispatch => {
 		})
 		.catch(err => {
 			if (err.response.status === 404) {
-				debugger
 				dispatch({
 					type: types.FETCH_REVIEWS,
 					payload: [],

@@ -22,13 +22,13 @@ export function ReviewList(props) {
         <>
             {/* If _reviews_ is null, render 'Loading reviews...'  */}
             {/* Otherwise, if _reviews_ is [], render 'There are no reviews,' etc., otherwise render the review list. */}
-            {(!reviews && <p>Loading reviews...</p>) ||
-                (reviews.length === 0 && <p>There are no reviews yet for this book. Be the first!</p>) || 
-                <StyledReviewList>
-                    {reviews.map(reviewObj => (
-                        <ReviewCard reviewObj={reviewObj} key={uuid()} />
-                    ))}
-                </StyledReviewList>} 
+            <StyledReviewList>
+                {(!reviews && <h5>Loading reviews...</h5>) ||
+                    (reviews.length === 0 && <h5>There are no reviews yet for this book. Be the first!</h5>) ||
+                        reviews.map(reviewObj => (
+                            <ReviewCard reviewObj={reviewObj} key={uuid()} />
+                        ))}
+            </StyledReviewList>
         </>
     )
 }

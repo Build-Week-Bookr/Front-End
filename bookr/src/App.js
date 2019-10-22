@@ -14,6 +14,7 @@ import BookPage from "./components/bookPage/BookPage";
 
 const rootReducer = combineReducers({
   books: reducers.booksReducer,
+  book: reducers.bookReducer,
   reviews: reducers.reviewsReducer,
   signUpValues: reducers.signUpReducer,
   logInValues: reducers.logInReducer

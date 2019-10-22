@@ -42,21 +42,7 @@ export function logInReducer(state = initialFormState, action) {
 	}
 }
 
-// Book State:
-// const initialBooks = [
-//     {
-//         id: 1,
-//         title: "The Beginning of Infinity",
-//         author: "David Deutsch",
-//         publisher: "Viking",
-//     },
-//     {
-//         id: 2,
-//         title: "The Blank Slate",
-//         author: "Stephen Pinker",
-//         publisher: "Penguin",
-//     }
-// ];
+// Books state:
 const initialBooks = [];
 export function booksReducer(books = initialBooks, action) {
     switch(action.type) {
@@ -67,16 +53,16 @@ export function booksReducer(books = initialBooks, action) {
     }
 }
 
-// const initialReviews = [
-//     {
-//         reviewer: "Carnun",
-//         review: "Great book! 10/10 would read again."
-//     },
-//     {
-//         reviewer: "Francis",
-//         review: "Loved it! Made me think."
-//     }
-// ];
+const initialBook = null;
+export function bookReducer(book = initialBook, action) {
+	switch(action.type) {
+		case types.FETCH_BOOK:
+			return action.payload;
+		default:
+			return book;
+	}
+}
+
 const initialReviews = null;
 export function reviewsReducer(reviews = initialReviews, action) {
     switch(action.type) {

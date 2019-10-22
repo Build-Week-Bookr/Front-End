@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../state/actionCreators";
 import styled from "styled-components";
@@ -10,14 +10,22 @@ const StyledHeaderCard = styled.div`
 `;
 
 export function HeaderCard(props) {
-    const { books } = props;
-    const book = books.find(book => book.id === props.id);
+    const { id, book, fetchBook } = props;
+    
+    useEffect(() => {
+        fetchBook(id);
+    }, []);
 
+    console.log(!book);
     return (
         <StyledHeaderCard>
-            <h3>{book.title}</h3>
-            <h4>{book.author}</h4>
-            <p>{book.publisher}</p>
+            {(!book && <h2>Loading Book...</h2>) ||
+                <>
+                    <h3>{book.title}</h3>
+                    <h4>{book.author}</h4>
+                    <p>{book.publisher}</p>
+                </>
+            }
         </StyledHeaderCard>
     )
 }
