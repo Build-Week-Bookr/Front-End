@@ -3,14 +3,18 @@ import './App.css';
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import Counter from './components/Counter';
+import * as reducers from './state/reducers';
+import { Route, NavLink } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
+
 import LogIn from './components/logIn&signUp/LogIn';
 import SignUp from './components/logIn&signUp/SignUp';
-import * as reducers from './state/reducers';
-
+import BookList from './components/homePage/BookList';
+import BookPage from "./components/bookPage/BookPage";
 
 const rootReducer = combineReducers({
-  count: reducers.countReducer,
+  books: reducers.booksReducer,
+  reviews: reducers.reviewsReducer,
   signUpValues: reducers.signUpReducer,
   logInValues: reducers.logInReducer
 })
@@ -28,9 +32,10 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <Counter />
+        <Route exact path="/" component={LogIn} />
         <SignUp />
-        <LogIn />
+        <Route path="/books" render={props => PrivateRoute(BookList, props)} />
+        <Route path="/book/:id" render={props => PrivateRoute(BookPage, props)} />
       </div>
     </Provider>
   );

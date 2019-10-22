@@ -1,18 +1,6 @@
 import * as types from '../state/actionTypes';
 import axios from 'axios';
 
-export function incrementCount() {
-	return {
-		type: types.INCREMENT
-	}
-}
-
-export function decrementCount() {
-	return {
-		type: types.DECREMENT
-	}
-}
-
 export function signUpFormChange(target) {
 	return {
 		type: types.ON_INPUT_CHANGE,
