@@ -93,6 +93,7 @@ export const fetchReviews = id => dispatch => {
 		})
 		.catch(err => {
 			if (err.response.status === 404) {
+				debugger
 				dispatch({
 					type: types.FETCH_REVIEWS,
 					payload: [],
@@ -100,3 +101,6 @@ export const fetchReviews = id => dispatch => {
 			}
 		});
 };
+export const clearReviews = () => {
+	return { type: types.CLEAR_REVIEWS }
+}

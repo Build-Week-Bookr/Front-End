@@ -77,11 +77,13 @@ export function booksReducer(books = initialBooks, action) {
 //         review: "Loved it! Made me think."
 //     }
 // ];
-const initialReviews = [];
+const initialReviews = null;
 export function reviewsReducer(reviews = initialReviews, action) {
     switch(action.type) {
 		case types.FETCH_REVIEWS:
 			return action.payload;
+		case types.CLEAR_REVIEWS:
+			return null;
         default:
             return reviews;
     }

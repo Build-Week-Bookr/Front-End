@@ -20,13 +20,15 @@ export function ReviewList(props) {
 
     return (
         <>
-            {reviews.length === 0 && <p>loading reviews...</p>}
-            {reviews.length !== 0 && 
+            {/* If _reviews_ is null, render 'Loading reviews...'  */}
+            {/* Otherwise, if _reviews_ is [], render 'There are no reviews,' etc., otherwise render the review list. */}
+            {(!reviews && <p>Loading reviews...</p>) ||
+                (reviews.length === 0 && <p>There are no reviews yet for this book. Be the first!</p>) || 
                 <StyledReviewList>
                     {reviews.map(reviewObj => (
                         <ReviewCard reviewObj={reviewObj} key={uuid()} />
                     ))}
-                </StyledReviewList>}
+                </StyledReviewList>} 
         </>
     )
 }
