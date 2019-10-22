@@ -36,3 +36,21 @@ export function signUpReducer(state = initialFormState, action) {
 				return state;
 	}
 }
+
+export function logInReducer(state = initialFormState, action) {
+	switch (action.type) {
+		case types.ON_INPUT_CHANGE:
+			return {
+				...state, 
+				[action.payload.name]: action.payload.value
+			}
+		case types.POST_LOGIN_DATA:
+			return {
+				...state,
+				username: action.payload,
+				password: action.payload
+			}
+			default:
+				return state;
+	}
+}

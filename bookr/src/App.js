@@ -11,7 +11,8 @@ import * as reducers from './state/reducers';
 
 const rootReducer = combineReducers({
   count: reducers.countReducer,
-  signUpValues: reducers.signUpReducer
+  signUpValues: reducers.signUpReducer,
+  logInValues: reducers.logInReducer
 })
 
 const store = createStore(
@@ -29,6 +30,7 @@ function App() {
       <div className="App">
         <Counter />
         <SignUp />
+        <LogIn />
       </div>
     </Provider>
   );
