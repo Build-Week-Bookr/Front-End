@@ -16,7 +16,6 @@ export function HeaderCard(props) {
         fetchBook(id);
     }, []);
 
-    console.log(!book);
     return (
         <StyledHeaderCard>
             {(!book && <h2>Loading Book...</h2>) ||
