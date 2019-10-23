@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../state/actionCreators";
 import styled from "styled-components";
+import { Redirect } from "react-router-dom";
 
 import starImg from "../../images/star.png";
 
@@ -50,8 +51,12 @@ const StyledHeaderCard = styled.div`
         p {
             margin-bottom: 1rem;
         }
-        h6 {
-            margin-top: 2rem;
+        a {
+            text-decoration: none;
+            border: 2px solid #05182a;
+            border-radius: 5px;
+            width: 3rem;
+            padding: 0.5rem;
         }
     }
 `;
@@ -83,7 +88,9 @@ export function HeaderCard(props) {
                         <h4>{book.author}</h4>
                         <p>@ {book.publisher}</p>
                         <p>{book.synopsis}</p>
-                        <h6>Purhase here: {book.purchase_url}</h6>
+                        <a href={book.purchase_url}>
+                            Purchase Book
+                        </a>
                     </div>
                 </>
             }
