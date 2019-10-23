@@ -90,3 +90,22 @@ export function userReducer(user = initialUser, action) {
 			return user;
 	}
 }
+
+// Modal state:
+const initialModalState = {
+	triggered: false,
+	message: "",
+}
+export function modalReducer(modalState = initialModalState, action) {
+	switch(action.type) {
+		case types.TRIGGER_MODAL:
+			return {
+				triggered: true,
+				message: action.payload,
+			}
+		case types.KILL_MODAL:
+			return initialModalState;
+		default:
+			return modalState;
+	}
+}

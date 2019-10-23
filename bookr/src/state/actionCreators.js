@@ -174,3 +174,15 @@ export const fetchUser = id => dispatch => {
 			debugger
 		})
 };
+
+// Modal:
+export const triggerModal = message => {
+	setTimeout(killModal(), 5000);
+	return { 
+		type: types.TRIGGER_MODAL,
+		payload: message,
+	}
+}
+const killModal = () => {
+	return { type: types.KILL_MODAL }
+}
