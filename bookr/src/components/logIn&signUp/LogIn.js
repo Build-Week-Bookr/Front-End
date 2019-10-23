@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../state/actionCreators';
+import {Link} from 'react-router-dom'
 
 export function LogIn(props) {
 	const {logInFormChange, logInValues, logIn} = props;
@@ -30,7 +31,9 @@ export function LogIn(props) {
 				</div>
 				<button>Login</button>
 			</form>
-			<p>Don't have an account with us yet? Sign Up here</p>
+			<p>Don't have an account with us yet?
+				 <Link to='/signup'>Sign Up here</Link>
+			</p>
 		</div>
 	)
 }

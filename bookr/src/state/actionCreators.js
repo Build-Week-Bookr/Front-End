@@ -5,7 +5,7 @@ import axiosWithAuth from "../axios";
 // Forms:
 export function signUpFormChange(target) {
 	return {
-		type: types.ON_INPUT_CHANGE,
+		type: types.ON_SIGN_UP_INPUT_CHANGE,
 		payload: {
 			name: target.name,
 			value: target.value
@@ -36,7 +36,7 @@ export const signUp = addUser => dispatch => {
 
 export function logInFormChange(target) {
 	return {
-		type: types.ON_INPUT_CHANGE,
+		type: types.ON_LOGIN_INPUT_CHANGE,
 		payload: {
 			name: target.name,
 			value: target.value
