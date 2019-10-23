@@ -48,6 +48,8 @@ export function booksReducer(books = initialBooks, action) {
     switch(action.type) {
 		case types.FETCH_BOOKS:
 			return action.payload;
+		case types.ADD_BOOK:
+			return [...books, action.payload];
         default:
             return books;
     }
