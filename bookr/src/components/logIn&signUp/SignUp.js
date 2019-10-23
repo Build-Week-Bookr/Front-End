@@ -16,15 +16,9 @@ const validationSchema = yup.object().shape({
 })
 
 export function SignUp(props) {
-	const {signUpFormChange, signUpValues, signUp} = props;
+	const {signUp} = props;
 
-	const onInputChange = event => {
-		signUpFormChange(event.target)
-
-	}
-
-	const onSignUpSubmit = event => {
-			event.preventDefault();
+	const onSignUpSubmit = signUpValues => {
 			signUp(signUpValues)
 			props.history.push('/')
 		}
@@ -35,13 +29,13 @@ export function SignUp(props) {
 		render={props => {
 			return (
 				<div>
-				<Form onSubmit={onSignUpSubmit}>
+				<Form>
 				<div>
-				<Field type="username" name="username" placeholder='Username' onChange={onInputChange}/>
+				<Field type="username" name="username" placeholder='Username'/>
           <ErrorMessage name="username" component="div" />
 				</div>
 				<div>
-          <Field type="password" name="password" placeholder='Password' onChange={onInputChange} />
+          <Field type="password" name="password" placeholder='Password' />
           <ErrorMessage name="password" component="div" />
 				</div>
           <button type="submit">Sign Up</button>
