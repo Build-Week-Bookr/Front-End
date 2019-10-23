@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export function signUpFormChange(target) {
 	return {
-		type: types.ON_INPUT_CHANGE,
+		type: types.ON_SIGN_UP_INPUT_CHANGE,
 		payload: {
 			name: target.name,
 			value: target.value
@@ -34,7 +34,7 @@ export const signUp = addUser => dispatch => {
 
 export function logInFormChange(target) {
 	return {
-		type: types.ON_INPUT_CHANGE,
+		type: types.ON_LOGIN_INPUT_CHANGE,
 		payload: {
 			name: target.name,
 			value: target.value
@@ -48,7 +48,7 @@ const logInUser = user => {
 	}
 }
 export const logIn = logUser => dispatch => {
-	axios.post('https://bookr-build-backend.herokuapp.com/api/auth/register', logUser)
+	axios.post('https://bookr-build-backend.herokuapp.com/api/auth/login', logUser)
 	.then(res => {
 		console.log('submitLogin', res)
 		console.log('Log in user', logUser)

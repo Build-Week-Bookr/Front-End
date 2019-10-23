@@ -36,7 +36,8 @@ export function reviewsReducer(reviews = initialReviews, action) {
     switch(action.type) {
         default:
             return reviews;
-    }
+	}
+}
 
 const initialFormState = {
 	username: '',
@@ -46,7 +47,7 @@ const initialFormState = {
 // Form state:
 export function signUpReducer(state = initialFormState, action) {
 	switch (action.type) {
-		case types.ON_INPUT_CHANGE:
+		case types.ON_SIGN_UP_INPUT_CHANGE:
 			return {
 				...state,
 				[action.payload.name]: action.payload.value
@@ -64,7 +65,7 @@ export function signUpReducer(state = initialFormState, action) {
 
 export function logInReducer(state = initialFormState, action) {
 	switch (action.type) {
-		case types.ON_INPUT_CHANGE:
+		case types.ON_LOGIN_INPUT_CHANGE:
 			return {
 				...state, 
 				[action.payload.name]: action.payload.value

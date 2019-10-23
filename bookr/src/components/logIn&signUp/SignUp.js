@@ -1,35 +1,49 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../state/actionCreators';
+import {Formik, Form, Field, ErrorMessage} from 'formik';
+import * as yup from 'yup';
+
+
+const validationSchema = yup.object().shape({
+	username: yup.string()
+	.required('A username is required')
+	.min(3, 'Name must be 3 characters or longer'),
+
+	password: yup.string()
+	.min(6, 'Password must be at least 6 characters')
+	.required('A password is required'),
+})
 
 export function SignUp(props) {
-	const {signUpFormChange, signUpValues, signUp} = props;
+	const {signUp} = props;
 
-	const onInputChange = event => {
-		signUpFormChange(event.target)
-	}
-
-	const onSignUpSubmit = event => {
-		event.preventDefault();
-		signUp(signUpValues)
-	}
-
+	const onSignUpSubmit = signUpValues => {
+			signUp(signUpValues)
+			props.history.push('/')
+		}
 	return (
-		<div>
-			<form onSubmit={onSignUpSubmit}>
+		<Formik 
+		validationSchema={validationSchema}
+		onSubmit={onSignUpSubmit}
+		render={props => {
+			return (
 				<div>
-					<input name='username' type='text' placeholder='Username' 
-					value={signUpValues.username}
-					onChange={onInputChange}/>
+				<Form>
+				<div>
+				<Field type="username" name="username" placeholder='Username'/>
+          <ErrorMessage name="username" component="div" />
 				</div>
 				<div>
-					<input name='password' type='password' placeholder='Password'
-						value={signUpValues.password}
-						onChange={onInputChange} />
+          <Field type="password" name="password" placeholder='Password' />
+          <ErrorMessage name="password" component="div" />
 				</div>
-				<button>Sign Up</button>
-			</form>
-		</div>
+          <button type="submit">Sign Up</button>
+				</Form>
+			</div>
+			)
+		}}
+	/>
 	)
 }
 
