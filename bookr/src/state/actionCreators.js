@@ -22,15 +22,18 @@ const signUpUser = user => {
 
 export const signUp = addUser => dispatch => {
 	axios
-	.post('https://bookr-build-backend.herokuapp.com/api/auth/register', addUser)
+	.post('https://bookr-eu.herokuapp.com/api/auth/register', addUser)
 	.then(res => {
 		console.log('response', res)
 		console.log('user added', addUser)
 		localStorage.setItem('token', res.data.token)
 		dispatch(signUpUser(res.data.user))
+		alert('sign up successful')
+		
 	})
 	.catch(error => {
 		console.log('Sign up Error', error)
+		alert('error.response.data.message')
 	})
 }
 
@@ -50,21 +53,23 @@ const logInUser = user => {
 	}
 }
 export const logIn = logUser => dispatch => {
-	axios.post('https://bookr-build-backend.herokuapp.com/api/auth/login', logUser)
+	axios.post(' https://bookr-eu.herokuapp.com/api/auth/login', logUser)
 	.then(res => {
 		console.log('submitLogin', res)
 		console.log('Log in user', logUser)
 		localStorage.setItem('token', res.data.token)
 		dispatch(logInUser(res.data.user))
+		alert('Login successful')
 	})
 	.catch(error => {
 		console.log('Login Error', error)
+		alert(error.response.data.message)
 	})
 }
 
 // Books:
 export const fetchBooks = history => dispatch => {
-	axiosWithAuth().get("https://bookr-build-backend.herokuapp.com/api/books")
+	axiosWithAuth().get("https://bookr-eu.herokuapp.com/api/books")
 		.then(res => {
 			const books = res.data;
 			dispatch({ 
@@ -82,7 +87,7 @@ export const fetchBooks = history => dispatch => {
 		});
 };
 export const fetchBook = id => dispatch => {
-	axiosWithAuth().get(`https://bookr-build-backend.herokuapp.com/api/books/${id}`)
+	axiosWithAuth().get(`https://bookr-eu.herokuapp.com/api/books/${id}`)
 		.then(res => {
 			const book = res.data;
 			dispatch({
@@ -99,7 +104,7 @@ export const clearBook = () => {
 };
 
 export const fetchReviews = id => dispatch => {
-	axiosWithAuth().get(`https://bookr-build-backend.herokuapp.com/api/reviews/book/${id}`)
+	axiosWithAuth().get(`https://bookr-eu.herokuapp.com/api/reviews/book/${id}`)
 		.then(res => {
 			const reviews = res.data;
 			dispatch({
@@ -121,7 +126,7 @@ export const clearReviews = () => {
 }
 
 export const fetchUser = id => dispatch => {
-	axiosWithAuth().get(`https://bookr-build-backend.herokuapp.com/api/users/${id}`)
+	axiosWithAuth().get(`https://bookr-eu.herokuapp.com/api/users/${id}`)
 		.then(res => {
 			dispatch({
 				type: types.FETCH_USER,

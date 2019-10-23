@@ -1,40 +1,54 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../state/actionCreators';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import * as yup from 'yup';
+import {Formik, Form, Field, ErrorMessage} from 'formik';
+
+const validationSchema = yup.object().shape({
+	username: yup.string()
+	.required('A username is required')
+	.min(3, 'Name must be 3 characters or longer'),
+
+	password: yup.string()
+	.min(6, 'Password must be at least 6 characters')
+	.required('A password is required'),
+})
 
 export function LogIn(props) {
-	const {logInFormChange, logInValues, logIn} = props;
+	const {logIn} = props;
 
-	const onInputChange = event => {
-		logInFormChange(event.target)
-	}
-
-	const onLogInSubmit = event => {
-		event.preventDefault();
+	const onLogInSubmit = logInValues => {
 		logIn(logInValues)
+		props.history.push('/books')
+
 	}
 
 	return (
-		<div>
-			<form onSubmit={onLogInSubmit}>
-				<div>
-					<input name='username' type='text' placeholder='Username'
-					value={logInValues.username}
-					onChange={onInputChange} />
-					
+		<Formik
+		validationSchema={validationSchema}
+		onSubmit={onLogInSubmit}
+		render={props => {
+			return (
+<div>
+			<Form>
+			<div>
+				<Field type="username" name="username" placeholder='Username'/>
+          <ErrorMessage name="username" component="div" />
 				</div>
 				<div>
-					<input name='password' type='password' placeholder='Password'
-					value={logInValues.password}
-					onChange={onInputChange} />
+          <Field type="password" name="password" placeholder='Password' />
+          <ErrorMessage name="password" component="div" />
 				</div>
-				<button>Login</button>
-			</form>
+          <button type="submit">Login</button>
+			</Form>
 			<p>Don't have an account with us yet?
 				 <Link to='/signup'>Sign Up here</Link>
 			</p>
 		</div>
+			)
+		}}
+		/>
 	)
 }
 
