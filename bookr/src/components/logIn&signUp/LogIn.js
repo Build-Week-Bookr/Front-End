@@ -20,7 +20,6 @@ export function LogIn(props) {
 
 	const onLogInSubmit = logInValues => {
 		logIn(logInValues)
-		alert('Login successful')
 		props.history.push('/books')
 
 	}

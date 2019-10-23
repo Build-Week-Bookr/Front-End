@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actionCreators from "../../state/actionCreators";
+import NavBar from '../navBar/NavBar'
 
 import BookCard from "./BookCard";
 
@@ -26,12 +27,14 @@ export function BookList(props) {
     }, []);
 
     return (
+        <>
             <StyledBookList>
                 {(books.length === 0 && <p>loading books...</p>) ||
                     (books.length !== 0 && books.map(book => (
                         <BookCard book={book} key={book.id} />
                     )))}
             </StyledBookList>
+            </>
     )
 }
 
