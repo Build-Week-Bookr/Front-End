@@ -25,7 +25,7 @@ class MenuContent extends Component {
           </a>
         </div>)} */}
         <nav className='menu-item'>
-        <NavLink to ='/books'>Books</NavLink>
+        <NavLink to ='/books'>Home</NavLink>
         <NavLink to = '/logout'>Log Out</NavLink>
         {/* <NavLink to ='/'>Books</NavLink> */}
         </nav>
