@@ -31,6 +31,7 @@ export const signUp = addUser => dispatch => {
 	})
 	.catch(error => {
 		console.log('Sign up Error', error)
+		alert('error.response.data.message')
 	})
 }
 
@@ -59,6 +60,7 @@ export const logIn = logUser => dispatch => {
 	})
 	.catch(error => {
 		console.log('Login Error', error)
+		alert(error.response.data.message)
 	})
 }
 

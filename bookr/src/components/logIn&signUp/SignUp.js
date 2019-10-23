@@ -20,6 +20,7 @@ export function SignUp(props) {
 
 	const onSignUpSubmit = signUpValues => {
 			signUp(signUpValues)
+			alert('sign up successful')
 			props.history.push('/')
 		}
 	return (
