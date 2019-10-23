@@ -53,7 +53,7 @@ const logInUser = user => {
 	}
 }
 export const logIn = logUser => dispatch => {
-	axios.post(' https://bookr-eu.herokuapp.com/api/auth/login', logUser)
+	axios.post('https://bookr-eu.herokuapp.com/api/auth/login', logUser)
 	.then(res => {
 		console.log('submitLogin', res)
 		console.log('Log in user', logUser)
@@ -102,6 +102,43 @@ export const fetchBook = id => dispatch => {
 export const clearBook = () => {
 	return { type: types.CLEAR_BOOK }
 };
+export const addBook = formValues => dispatch => {
+	const dummyUserId = 1;
+	const bookToPost = {
+		title: formValues.title,
+		author: formValues.author,
+		publisher: formValues.publisher,
+		synopsis: formValues.synopsis,
+		cover_image: formValues.cover_image,
+		purchase_url: formValues.purchase_url,
+		added_by: dummyUserId,
+	}
+
+	axiosWithAuth().post("https://bookr-eu.herokuapp.com/api/books", bookToPost)
+		.then(res => {
+			const book = res.data;
+			dispatch({
+				type: types.ADD_BOOK,
+				payload: book,
+			})
+		})
+		.catch(err => {
+			debugger
+		});
+}
+export const deleteBook = id => dispatch => {
+	axiosWithAuth().delete(`https://bookr-eu.herokuapp.com/api/books/${id}`)
+		.then(res => {
+			const booksSansDeletedBook = res.data;
+			dispatch({
+				type: types.DELETE_BOOK,
+				payload: booksSansDeletedBook,
+			});
+		})
+		.catch(err => {
+			debugger
+		});
+}
 
 export const fetchReviews = id => dispatch => {
 	axiosWithAuth().get(`https://bookr-eu.herokuapp.com/api/reviews/book/${id}`)

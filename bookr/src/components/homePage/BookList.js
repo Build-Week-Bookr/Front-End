@@ -5,6 +5,7 @@ import * as actionCreators from "../../state/actionCreators";
 import NavBar from '../navBar/NavBar'
 
 import BookCard from "./BookCard";
+import NewBookForm from "./NewBookForm";
 
 const StyledBookList = styled.div`
     width: 100%;
@@ -28,13 +29,14 @@ export function BookList(props) {
 
     return (
         <>
+            <NewBookForm />
             <StyledBookList>
                 {(books.length === 0 && <p>loading books...</p>) ||
                     (books.length !== 0 && books.map(book => (
                         <BookCard book={book} key={book.id} />
                     )))}
             </StyledBookList>
-            </>
+        </>
     )
 }
 

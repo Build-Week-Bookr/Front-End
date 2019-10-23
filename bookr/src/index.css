@@ -50,6 +50,7 @@ table {
 /* Overrides: */
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Didact Gothic', sans-serif;
+	color: #05182a;
 }
 
 h1 {
@@ -74,6 +75,7 @@ h6 {
 p, span {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1rem;
+	color: #05182a;
 }
 
 * {
