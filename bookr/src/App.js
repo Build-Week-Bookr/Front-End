@@ -12,6 +12,7 @@ import SignUp from './components/logIn&signUp/SignUp';
 import BookList from './components/homePage/BookList';
 import BookPage from "./components/bookPage/BookPage";
 import NavBar from './components/navBar/NavBar';
+import Logout from './components/logout/Logout';
 import { sign } from 'crypto';
 
 const rootReducer = combineReducers({
@@ -41,6 +42,7 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/books" render={props => PrivateRoute(BookList, props)} />
         <Route path="/book/:id" render={props => PrivateRoute(BookPage, props)} />
+        <Route path="/logout" render={props => PrivateRoute(Logout, props)} />
         {/* <Route path="/menu" component={NavBar}/> */}
       </div>
     </Provider>

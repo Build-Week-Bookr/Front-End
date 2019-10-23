@@ -3,11 +3,17 @@ import { render } from 'react-dom'
 import CheeseburgerMenu from 'cheeseburger-menu';
 import HamburgerMenu from 'react-hamburger-menu';
 import MenuContent from './MenuContent';
+import styled from 'styled-components'
 
 const contentStyles = {
   fontFamily: 'sans-serif',
   textAlign: 'center',
 }
+
+const NavBarStyled = styled.div`
+  margin-top: 10px;
+  margin-left: 10px;
+`
 
 
 export default class NavBar extends Component {
@@ -28,7 +34,7 @@ export default class NavBar extends Component {
   }
 
   render() {
-    return <div>
+    return <NavBarStyled>
       <CheeseburgerMenu
         isOpen={this.state.menuOpen}
         closeCallback={this.closeMenu.bind(this)}>
@@ -48,6 +54,6 @@ export default class NavBar extends Component {
       />
       <div style={contentStyles}>
       </div>
-    </div>
+    </NavBarStyled>
   }
 }
