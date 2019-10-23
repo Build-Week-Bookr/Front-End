@@ -5,19 +5,20 @@ import ReviewList from "./ReviewList";
 import { NavLink } from "react-router-dom"
 
 const StyledBookPage = styled.div`
-    height: 100vh;
-    background: red;
+    width: 100%;
+    min-height: 100vh;
+    background: #b3b3b3;
     padding: 2rem;
 `;
 
 export default function BookPage(props) {
-    const id = parseInt(props.match.params.id);
+    const bookId = parseInt(props.match.params.id);
 
     return (
         <StyledBookPage>
-        <NavLink to="/">Home</NavLink>
-            <HeaderCard id={id} />
-            <ReviewList />
+            <NavLink to="/books">Back</NavLink><br/>
+            <HeaderCard bookId={bookId} />
+            <ReviewList bookId={bookId}/>
         </StyledBookPage>
     )
 }

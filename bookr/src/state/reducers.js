@@ -1,50 +1,11 @@
 import * as types from '../state/actionTypes';
 
-// Book State:
-const initialBooks = [
-    {
-        id: 1,
-        title: "The Beginning of Infinity",
-        author: "David Deutsch",
-        publisher: "Viking",
-    },
-    {
-        id: 2,
-        title: "The Blank Slate",
-        author: "Stephen Pinker",
-        publisher: "Penguin",
-    }
-];
-export function booksReducer(books = initialBooks, action) {
-    switch(action.type) {
-        default:
-            return books;
-    }
-}
-
-const initialReviews = [
-    {
-        reviewer: "Carnun",
-        review: "Great book! 10/10 would read again."
-    },
-    {
-        reviewer: "Francis",
-        review: "Loved it! Made me think."
-    }
-];
-export function reviewsReducer(reviews = initialReviews, action) {
-    switch(action.type) {
-        default:
-            return reviews;
-	}
-}
-
+// Form state:
 const initialFormState = {
 	username: '',
 	password: ''
 }
 
-// Form state:
 export function signUpReducer(state = initialFormState, action) {
 	switch (action.type) {
 		case types.ON_SIGN_UP_INPUT_CHANGE:
@@ -78,5 +39,50 @@ export function logInReducer(state = initialFormState, action) {
 			}
 			default:
 				return state;
+	}
+}
+
+// Books state:
+const initialBooks = [];
+export function booksReducer(books = initialBooks, action) {
+    switch(action.type) {
+		case types.FETCH_BOOKS:
+			return action.payload;
+        default:
+            return books;
+    }
+}
+
+const initialBook = null;
+export function bookReducer(book = initialBook, action) {
+	switch(action.type) {
+		case types.FETCH_BOOK:
+			return action.payload;
+		case types.CLEAR_BOOK:
+			return null;
+		default:
+			return book;
+	}
+}
+
+const initialReviews = null;
+export function reviewsReducer(reviews = initialReviews, action) {
+    switch(action.type) {
+		case types.FETCH_REVIEWS:
+			return action.payload;
+		case types.CLEAR_REVIEWS:
+			return null;
+        default:
+            return reviews;
+    }
+}
+
+const initialUser = null;
+export function userReducer(user = initialUser, action) {
+	switch(action.type) {
+		case types.FETCH_USER:
+			return action.payload;
+		default:
+			return user;
 	}
 }

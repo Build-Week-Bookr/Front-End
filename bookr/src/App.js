@@ -4,7 +4,7 @@ import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import * as reducers from './state/reducers';
-import { Route, NavLink } from "react-router-dom";
+import { Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 
 import LogIn from './components/logIn&signUp/LogIn';
@@ -15,7 +15,9 @@ import { sign } from 'crypto';
 
 const rootReducer = combineReducers({
   books: reducers.booksReducer,
+  book: reducers.bookReducer,
   reviews: reducers.reviewsReducer,
+  user: reducers.userReducer,
   signUpValues: reducers.signUpReducer,
   logInValues: reducers.logInReducer
 })
