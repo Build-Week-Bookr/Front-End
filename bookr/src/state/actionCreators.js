@@ -59,6 +59,7 @@ export const logIn = logUser => dispatch => {
 		console.log('Log in user', logUser)
 		localStorage.setItem('token', res.data.token)
 		dispatch(logInUser(res.data.user))
+		dispatch(setAuthedUserId(res.data.id));
 		alert('Login successful')
 	})
 	.catch(error => {
@@ -179,6 +180,14 @@ export const fetchUser = id => dispatch => {
 			debugger
 		})
 };
+
+export const setAuthedUserId = id => { // Hmm... this seems kinda redundant!
+	debugger
+	return {
+		type: types.SET_AUTHED_USER_ID,
+		payload: id,
+	}
+}
 
 // Modal:
 export const triggerModal = message => {

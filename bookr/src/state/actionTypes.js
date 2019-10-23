@@ -13,6 +13,7 @@ export const DELETE_BOOK = "DELETE_BOOK";
 export const FETCH_REVIEWS = "FETCH_REVIEWS";
 export const CLEAR_REVIEWS = "CLEAR_REVIEWS";
 export const FETCH_USER = "FETCH_USER";
+export const SET_AUTHED_USER_ID = "SET_AUTHED_USER_ID";
 
 // Modal:
 export const TRIGGER_MODAL = "TRIGGER_MODAL";

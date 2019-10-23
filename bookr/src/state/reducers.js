@@ -91,6 +91,16 @@ export function userReducer(user = initialUser, action) {
 	}
 }
 
+const initialAuthedUserId = null;
+export function authedUserIdReducer(authedUserId = initialAuthedUserId, action) {
+	switch(action.type) {
+		case types.SET_AUTHED_USER_ID:
+			return action.payload;
+		default:
+			return authedUserId;
+	}
+}
+
 // Modal state:
 const initialModalState = {
 	triggered: false,
