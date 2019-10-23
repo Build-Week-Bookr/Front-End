@@ -11,6 +11,7 @@ const StyledModal = styled.div`
     align-items: center;
     background: #F0F0F0;
     border: 2px solid #05182a;
+    border-radius: 5px;
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -22,10 +23,14 @@ export function Modal(props) {
     const { triggered, message } = modalState;
 
     return (
-        triggered &&
-            <StyledModal>
-                <h6>{message}</h6>
-            </StyledModal>
+        <StyledModal style={
+            !triggered ?
+                {display: "none"} :
+                {display: "flex"}
+            }
+        >
+            <h6>{message}</h6>
+        </StyledModal>
     )
 }
 

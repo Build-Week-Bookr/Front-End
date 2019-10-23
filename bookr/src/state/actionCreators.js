@@ -134,6 +134,11 @@ export const deleteBook = id => dispatch => {
 				type: types.DELETE_BOOK,
 				payload: booksSansDeletedBook,
 			});
+
+			// Also, trigger modal...
+			dispatch(triggerModal("Book sucessfully deleted."));
+			// ... then, after a wait, kill it!
+			setTimeout(() => dispatch(killModal()), 3000);
 		})
 		.catch(err => {
 			debugger
@@ -177,12 +182,11 @@ export const fetchUser = id => dispatch => {
 
 // Modal:
 export const triggerModal = message => {
-	setTimeout(killModal(), 5000);
 	return { 
 		type: types.TRIGGER_MODAL,
-		payload: message,
+		payload: message
 	}
 }
-const killModal = () => {
+export const killModal = () => {
 	return { type: types.KILL_MODAL }
 }
