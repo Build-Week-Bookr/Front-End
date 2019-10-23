@@ -95,4 +95,3 @@ export default connect(
     state => state,
     actionCreators
 )(HeaderCard);
-

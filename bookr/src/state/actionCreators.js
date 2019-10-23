@@ -109,7 +109,6 @@ export const addBook = formValues => dispatch => {
 		added_by: dummyUserId,
 	}
 
-	debugger
 	axiosWithAuth().post("https://bookr-eu.herokuapp.com/api/books", bookToPost)
 		.then(res => {
 			const book = res.data;
@@ -117,6 +116,19 @@ export const addBook = formValues => dispatch => {
 				type: types.ADD_BOOK,
 				payload: book,
 			})
+		})
+		.catch(err => {
+			debugger
+		});
+}
+export const deleteBook = id => dispatch => {
+	axiosWithAuth().delete(`https://bookr-eu.herokuapp.com/api/books/${id}`)
+		.then(res => {
+			const booksSansDeletedBook = res.data;
+			dispatch({
+				type: types.DELETE_BOOK,
+				payload: booksSansDeletedBook,
+			});
 		})
 		.catch(err => {
 			debugger

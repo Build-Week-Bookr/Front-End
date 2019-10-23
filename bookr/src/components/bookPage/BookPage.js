@@ -3,6 +3,7 @@ import styled from "styled-components";
 import HeaderCard from "./HeaderCard";
 import ReviewList from "./ReviewList";
 import { NavLink } from "react-router-dom"
+import DeleteButton from "./DeleteButton";
 
 const StyledBookPage = styled.div`
     width: 100%;
@@ -18,7 +19,8 @@ export default function BookPage(props) {
         <StyledBookPage>
             <NavLink to="/books">Back</NavLink><br/>
             <HeaderCard bookId={bookId} />
-            <ReviewList bookId={bookId}/>
+            <ReviewList bookId={bookId} />
+            <DeleteButton history={props.history} />
         </StyledBookPage>
     )
 }
