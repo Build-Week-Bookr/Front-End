@@ -28,9 +28,12 @@ export const signUp = addUser => dispatch => {
 		console.log('user added', addUser)
 		localStorage.setItem('token', res.data.token)
 		dispatch(signUpUser(res.data.user))
+		alert('sign up successful')
+		
 	})
 	.catch(error => {
 		console.log('Sign up Error', error)
+		alert('error.response.data.message')
 	})
 }
 
@@ -56,9 +59,11 @@ export const logIn = logUser => dispatch => {
 		console.log('Log in user', logUser)
 		localStorage.setItem('token', res.data.token)
 		dispatch(logInUser(res.data.user))
+		alert('Login successful')
 	})
 	.catch(error => {
 		console.log('Login Error', error)
+		alert(error.response.data.message)
 	})
 }
 

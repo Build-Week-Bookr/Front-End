@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actionCreators from "../../state/actionCreators";
+import NavBar from '../navBar/NavBar'
 
 import BookCard from "./BookCard";
 import NewBookForm from "./NewBookForm";
