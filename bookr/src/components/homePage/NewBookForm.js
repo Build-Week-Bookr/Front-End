@@ -10,7 +10,7 @@ const StyledNewBookForm = styled.div`
 `;
 
 export function NewBookForm(props){
-    const { addBook, fetchBooks } = props;
+    const { addBook, fetchBooks, authedUserId } = props;
 
     const validationSchema = yup.object().shape({
         title: yup.string().required("*title required"),
@@ -26,7 +26,7 @@ export function NewBookForm(props){
     });
 
     const onSubmit = formValues => {
-        addBook(formValues);
+        addBook(formValues, authedUserId);
         fetchBooks(props.history);
     }
 

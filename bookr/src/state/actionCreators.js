@@ -103,8 +103,7 @@ export const fetchBook = id => dispatch => {
 export const clearBook = () => {
 	return { type: types.CLEAR_BOOK }
 };
-export const addBook = formValues => dispatch => {
-	const dummyUserId = 1;
+export const addBook = (formValues, authedUserId) => dispatch => {
 	const bookToPost = {
 		title: formValues.title,
 		author: formValues.author,
@@ -112,7 +111,7 @@ export const addBook = formValues => dispatch => {
 		synopsis: formValues.synopsis,
 		cover_image: formValues.cover_image,
 		purchase_url: formValues.purchase_url,
-		added_by: dummyUserId,
+		added_by: authedUserId,
 	}
 
 	axiosWithAuth().post("https://bookr-eu.herokuapp.com/api/books", bookToPost)
@@ -182,7 +181,6 @@ export const fetchUser = id => dispatch => {
 };
 
 export const setAuthedUserId = id => { // Hmm... this seems kinda redundant!
-	debugger
 	return {
 		type: types.SET_AUTHED_USER_ID,
 		payload: id,
