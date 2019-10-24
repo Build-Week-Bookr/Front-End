@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import * as actionCreators from "../../state/actionCreators";
+import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-
-import starImg from "../../images/star.png";
+import DynamicStars from "../DynamicStars";
 
 const StyledBookCard = styled.div`
     width: 22rem;
@@ -37,14 +34,6 @@ const StyledBookCard = styled.div`
                 width: 100%;
             }
         }
-        .rating {
-            width: 100%;
-
-            img {
-                margin-left: 0.25rem;
-                margin-right: 0.25rem;
-            }
-        }
     }
 
     .text-box {
@@ -68,22 +57,8 @@ const StyledBookCard = styled.div`
     }
 `;
 
-export function BookCard(props) {
-    const { book, reviews, fetchReviews } = props;
-    
-    useEffect(() => {
-        fetchReviews(book.id); 
-    }, [])
-    const generateStarArray = () => {
-        if (reviews && reviews[0].book_id === book.id) {
-            const averageRating = reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
-            const roundedAverageRating = Math.round(averageRating);
-            let starArray = [1, 2, 3, 4, 5];
-            console.log(book.id, reviews, averageRating, roundedAverageRating, starArray.slice(0, roundedAverageRating));
-            return starArray.slice(0, roundedAverageRating);
-        }
-    }
-    const starArray = generateStarArray();
+export default function BookCard(props) {
+    const { book } = props;
 
     return (
         <StyledBookCard>
@@ -92,11 +67,7 @@ export function BookCard(props) {
                     <div className="img-box">
                         <img src={book.cover_image} alt="cover image" />
                     </div>
-                    <div className="rating">
-                        {(!starArray && <h6>No rating yet!</h6>) || starArray.map(i => (
-                            <img src={starImg} alt="star" key={i} />
-                        ))}
-                    </div>
+                    <DynamicStars bookId={book.id} />
                 </div>
                 <div className="text-box">
                     <h4>{book.title}</h4>
@@ -107,8 +78,3 @@ export function BookCard(props) {
         </StyledBookCard>
     )
 }
-
-export default connect(
-	state => ({reviews: state.reviews, fetchReviews: state.fetchReviews}),
-	actionCreators
-)(BookCard);
