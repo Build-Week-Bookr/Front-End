@@ -59,8 +59,8 @@ export const logIn = logUser => dispatch => {
 		console.log('submitLogin', res)
 		console.log('Log in user', logUser)
 		localStorage.setItem('token', res.data.token)
-		dispatch(logInUser(res.data.user))
-		dispatch(setAuthedUserId(res.data.id));
+		dispatch(logInUser(res.data))
+		localStorage.setItem("authedUserId", res.data.id);
 		alert('Login successful')
 		
 	})
@@ -148,6 +148,7 @@ export const deleteBook = id => dispatch => {
 }
 
 export const addReview = (formValues, authedUserId, bookId) => dispatch => {
+	debugger
 	const reviewToPost = {
 		book_id: bookId,
 		contents: formValues.contents,
@@ -205,13 +206,6 @@ export const fetchUser = id => dispatch => {
 			alert("fetchUser actionCreator: " + err.message);
 		})
 };
-
-export const setAuthedUserId = id => { // Hmm... this seems kinda redundant!
-	return {
-		type: types.SET_AUTHED_USER_ID,
-		payload: id,
-	}
-}
 
 // Modal:
 export const triggerModal = message => {

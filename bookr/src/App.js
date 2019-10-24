@@ -16,13 +16,11 @@ import Logout from './components/logout/Logout';
 import Modal from "./components/Modal";
 import AddReview  from './components/bookPage/AddReview';
 
-
 const rootReducer = combineReducers({
   books: reducers.booksReducer,
   book: reducers.bookReducer,
   reviews: reducers.reviewsReducer,
   user: reducers.userReducer,
-  authedUserId: reducers.authedUserIdReducer,
   modalState: reducers.modalReducer,
   signUpValues: reducers.signUpReducer,
   logInValues: reducers.logInReducer

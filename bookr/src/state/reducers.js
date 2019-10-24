@@ -75,7 +75,7 @@ export function reviewsReducer(reviews = initialReviews, action) {
 		case types.FETCH_REVIEWS:
 			return action.payload;
 		case types.ADD_REVIEW:
-			return [...reviews, ...action.payload]	
+			return [...reviews, action.payload]	
 		case types.CLEAR_REVIEWS:
 			return null;
         default:
@@ -90,16 +90,6 @@ export function userReducer(user = initialUser, action) {
 			return action.payload;
 		default:
 			return user;
-	}
-}
-
-const initialAuthedUserId = null;
-export function authedUserIdReducer(authedUserId = initialAuthedUserId, action) {
-	switch(action.type) {
-		case types.SET_AUTHED_USER_ID:
-			return action.payload;
-		default:
-			return authedUserId;
 	}
 }
 

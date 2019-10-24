@@ -24,12 +24,14 @@ const StyledDeleteButton = styled.div`
 `;
 
 export function DeleteButton(props) {
-    const { book, deleteBook, history, authedUserId } = props;
+    const { book, deleteBook, history } = props;
 
     const onClick = book => {
         deleteBook(book.id);
         history.push("/books");
     }
+
+    const authedUserId = localStorage.getItem("authedUserId");
 
     return (
         book && authedUserId === book.added_by &&

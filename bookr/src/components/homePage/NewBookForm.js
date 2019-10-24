@@ -69,7 +69,7 @@ const StyledNewBookForm = styled.div`
 `;
 
 export function NewBookForm(props) {
-    const { addBook, fetchBooks, authedUserId } = props;
+    const { addBook, fetchBooks } = props;
 
     const validationSchema = yup.object().shape({
         title: yup.string().required("*title required"),
@@ -84,6 +84,7 @@ export function NewBookForm(props) {
         purchase_url: yup.string().url().required("*purchase url must be a URL"),
     });
 
+    const authedUserId = localStorage.getItem("authedUserId");
     const onSubmit = formValues => {
         addBook(formValues, authedUserId);
         fetchBooks(props.history);

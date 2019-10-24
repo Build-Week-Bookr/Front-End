@@ -19,7 +19,7 @@ const ReviewFormStyled = styled.div`
 
 export function AddReview(props) {
 
-	const {authedUserId, book, addReview, fetchReviews} = props;
+	const {book, addReview, fetchReviews} = props;
 
 	const [rating, setRating] = useState(0);
 
@@ -27,10 +27,10 @@ export function AddReview(props) {
 		setRating(nextValue)
 	}
 
-
+	const authedUserId = localStorage.getItem("authedUserId");
 	const onSubmit = formValues => {
-		addReview(formValues, authedUserId);
-		fetchReviews(props.history);
+		addReview(formValues, authedUserId, book.id);
+		fetchReviews(book.id);
 		props.history.push(`/book/${book.id}`)
 	}
 
