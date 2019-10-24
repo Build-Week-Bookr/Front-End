@@ -148,7 +148,6 @@ export const deleteBook = id => dispatch => {
 }
 
 export const addReview = (formValues, authedUserId, bookId) => dispatch => {
-	debugger
 	const reviewToPost = {
 		book_id: bookId,
 		contents: formValues.contents,
@@ -180,7 +179,9 @@ export const fetchReviews = id => dispatch => {
 			});
 		})
 		.catch(err => {
-			if (err.response && err.response.status === 404) {
+			if (err.response && err.response.status === 404) { 
+			// This here isn't an ideal solution by any means. But ideally, the backend
+			// would send back an empty array if there are no reviews, instead of throw an error! :P
 				dispatch({
 					type: types.FETCH_REVIEWS,
 					payload: [],
