@@ -4,6 +4,7 @@ import * as actionCreators from "../../state/actionCreators";
 import styled from "styled-components";
 import uuid from "uuid";
 import AddReview from './AddReview';
+import { NavLink } from 'react-router-dom';
 
 import ReviewCard from "./ReviewCard";
 
@@ -26,30 +27,31 @@ const StyledReviewList = styled.div`
 `;
 
 export function ReviewList(props) {
-    const { reviews, bookId, fetchReviews } = props;
+	const { reviews, bookId, fetchReviews, book } = props;
 
-    useEffect(() => {
-        fetchReviews(bookId);
-    }, []);
+	useEffect(() => {
+		fetchReviews(bookId);
+	}, []);
 
-    return (
-        <>
-            {/* If _reviews_ is null, render 'Loading reviews...'  */}
-            {/* Otherwise, if _reviews_ is [], render 'There are no reviews,' etc., otherwise render the review list. */}
-            <StyledReviewList>
-                <h4>Reviews</h4>
-				<AddReview />
-                {(!reviews && <h5>Loading reviews...</h5>) ||
-                    (reviews.length === 0 && <h5>There are no reviews yet for this book. Be the first!</h5>) ||
-                        reviews.map(reviewObj => (
-                            <ReviewCard reviewObj={reviewObj} key={reviewObj.id} />
-                        ))}
-            </StyledReviewList>
-        </>
-    )
+	return (
+		<>
+			{/* If _reviews_ is null, render 'Loading reviews...'  */}
+			{/* Otherwise, if _reviews_ is [], render 'There are no reviews,' etc., otherwise render the review list. */}
+			<StyledReviewList>
+				<h4>Reviews</h4>
+				{/* <AddReview /> */}
+				{(!reviews && <h5>Loading reviews...</h5>) ||
+					(reviews.length === 0 && <h5>There are no reviews yet for this book. Be the first!</h5>) ||
+					reviews.map(reviewObj => (
+						<ReviewCard reviewObj={reviewObj} key={reviewObj.id} />
+					))}
+					 <NavLink to={`/book/${bookId}/addReview`}><button>Add a review</button></NavLink>
+			</StyledReviewList>
+		</>
+	)
 }
 
 export default connect(
-    state => state,
-    actionCreators,
+	state => state,
+	actionCreators,
 )(ReviewList)
