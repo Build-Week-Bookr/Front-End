@@ -1,5 +1,6 @@
 import * as types from '../state/actionTypes';
 import axios from 'axios';
+import React from 'react';
 import axiosWithAuth from "../axios";
 
 // Forms:
@@ -60,10 +61,11 @@ export const logIn = logUser => dispatch => {
 		localStorage.setItem('token', res.data.token)
 		dispatch(logInUser(res.data.user))
 		alert('Login successful')
+		
 	})
 	.catch(error => {
 		console.log('Login Error', error)
-		alert(error.response.data.message)
+		alert(error.message)
 	})
 }
 
@@ -138,6 +140,29 @@ export const deleteBook = id => dispatch => {
 		.catch(err => {
 			debugger
 		});
+}
+
+export const addReview = (inData, review) => dispatch => {
+	// const dummyUserId = 1
+	// const reviewToPost = {
+	// 	book_id: formValues.id,
+	// 	contents: formValues.contents,
+	// 	rating: formValues.rating,
+	// 	added_by: dummyUserId
+	// }
+
+	axiosWithAuth().post(inData, review)
+	.then(res => {
+		const reviews = [...res.data];
+		console.log('Add review', res)
+		dispatch(fetchReviews(reviews)
+			// type: types.ADD_REVIEW,
+			// payload: review,
+		);
+	})
+	.catch(error => {
+		console.log('Error:', error)
+	})
 }
 
 export const fetchReviews = id => dispatch => {

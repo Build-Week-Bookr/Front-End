@@ -14,8 +14,8 @@ const StyledReviewCard = styled.div`
 `;
 
 export function ReviewCard(props) {
-    const { reviewObj, user, fetchUser } = props;
-    const userId = reviewObj.user_id;
+    const { review, contents, rating, user, fetchUser } = props;
+    const userId = review.user_id;
 
     useEffect(() => {
         if (!user) {
@@ -27,7 +27,8 @@ export function ReviewCard(props) {
         <StyledReviewCard>
             {(!user && <h6>...</h6>) ||
                 <>
-                    <p>"{reviewObj.contents}"</p>
+                    <p>"{contents}"</p>
+                    <p>{rating}</p>
                     <h6>— {user.username}</h6>
                 </>
             }

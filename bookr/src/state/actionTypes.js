@@ -13,3 +13,5 @@ export const DELETE_BOOK = "DELETE_BOOK";
 export const FETCH_REVIEWS = "FETCH_REVIEWS";
 export const CLEAR_REVIEWS = "CLEAR_REVIEWS";
 export const FETCH_USER = "FETCH_USER";
+export const ADD_REVIEW = "ADD_REVIEW";
+export const DELETE_REVIEW = "DELETE_REVIEW"

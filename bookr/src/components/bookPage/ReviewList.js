@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../state/actionCreators";
 import styled from "styled-components";
 import uuid from "uuid";
+import AddReview from './AddReview';
 
 import ReviewCard from "./ReviewCard";
 
@@ -36,11 +37,14 @@ export function ReviewList(props) {
             {/* If _reviews_ is null, render 'Loading reviews...'  */}
             {/* Otherwise, if _reviews_ is [], render 'There are no reviews,' etc., otherwise render the review list. */}
             <StyledReviewList>
+                <AddReview />
                 <h4>Reviews</h4>
                 {(!reviews && <h5>Loading reviews...</h5>) ||
                     (reviews.length === 0 && <h5>There are no reviews yet for this book. Be the first!</h5>) ||
-                        reviews.map(reviewObj => (
-                            <ReviewCard reviewObj={reviewObj} key={uuid()} />
+                        reviews.map(review => (
+														<ReviewCard 
+														contents={review.contents}
+														rating={review.rating} key={uuid()} />
                         ))}
             </StyledReviewList>
         </>

@@ -14,6 +14,7 @@ import BookPage from "./components/bookPage/BookPage";
 import NavBar from './components/navBar/NavBar';
 import Logout from './components/logout/Logout';
 import { sign } from 'crypto';
+import AddReview from './components/bookPage/AddReview';
 
 const rootReducer = combineReducers({
   books: reducers.booksReducer,
@@ -43,6 +44,7 @@ function App() {
         <Route path="/books" render={props => PrivateRoute(BookList, props)} />
         <Route path="/book/:id" render={props => PrivateRoute(BookPage, props)} />
         <Route path="/logout" render={props => PrivateRoute(Logout, props)} />
+        {/* <Route path="/book/:id/reviewform" render={props => PrivateRoute(AddReview, props)} /> */}
         {/* <Route path="/menu" component={NavBar}/> */}
       </div>
     </Provider>
