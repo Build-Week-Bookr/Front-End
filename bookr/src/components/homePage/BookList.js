@@ -15,7 +15,12 @@ const StyledBookList = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
+	
+	p {
+		font-family: 'Open Sans', sans-serif;
+		color: #05182a;
+	}
 `;
 
 export function BookList(props) {

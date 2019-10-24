@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../state/actionCreators";
 import styled from "styled-components";
-import { Redirect } from "react-router-dom";
 
 import DynamicStars from "../DynamicStars";
 
 const StyledHeaderCard = styled.div`
-    height: 20rem;
+    min-height: 20rem;
     background: #F0F0F0;
+    margin-top: 2rem;
     margin-bottom: 1rem;
     border-radius: 10px;
     display: flex;
@@ -21,6 +21,7 @@ const StyledHeaderCard = styled.div`
         padding-bottom: 0;
         display: flex;
         flex-direction: column;
+        margin-bottom: 1rem;
 
         .img-box {
             width: 100%;
@@ -41,6 +42,7 @@ const StyledHeaderCard = styled.div`
         flex-grow: 1;
         padding: 1rem;
         padding-left: 0;
+        margin-bottom: 1rem;
 
         h3 {
             margin-bottom: 1rem;
@@ -50,20 +52,23 @@ const StyledHeaderCard = styled.div`
         }
         p {
             margin-bottom: 1rem;
+
+            &:nth-of-type(2) {
+                margin-bottom: 2rem;
+            }
         }
         a {
             text-decoration: none;
             border: 2px solid #05182a;
             border-radius: 5px;
             width: 3rem;
-            padding: 0.5rem;
+            padding: 0.5rem 1rem;
         }
     }
 `;
 
 export function HeaderCard(props) {
     const { bookId, book, fetchBook } = props;
-    const starArray = [1, 2, 3, 4, 5];
 
     useEffect(() => {
         fetchBook(bookId);
