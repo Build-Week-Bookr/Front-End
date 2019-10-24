@@ -32,7 +32,10 @@ export function AddReview(props) {
 	const onSubmit = formValues => {
 		addReview(formValues, authedUserId);
 		fetchReviews(props.history);
-}
+		props.history.push(`/book/${book.id}`)
+	}
+
+
 
 	return (
 		<Formik
@@ -56,7 +59,7 @@ export function AddReview(props) {
           onStarClick={onStarClick}
         />
 				</ReviewFormStyled>
-				<button type='submit'>Submit Book</button>
+				<button type='submit'>Add Review</button>
 			</Form>
 		)}
 		/>

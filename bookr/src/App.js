@@ -14,6 +14,7 @@ import BookPage from "./components/bookPage/BookPage";
 import NavBar from './components/navBar/NavBar';
 import Logout from './components/logout/Logout';
 import Modal from "./components/Modal";
+import AddReview  from './components/bookPage/AddReview';
 
 
 const rootReducer = combineReducers({
@@ -44,8 +45,9 @@ function App() {
         <Route exact path="/" component={LogIn} />
         <Route path="/signup" component={SignUp} />
         <Route path="/books" render={props => PrivateRoute(BookList, props)} />
-        <Route path="/book/:id" render={props => PrivateRoute(BookPage, props)} />
+        <Route exact path="/book/:id" render={props => PrivateRoute(BookPage, props)} />
         <Route path="/logout" render={props => PrivateRoute(Logout, props)} />
+        <Route path="/book/:id/addReview" render={props => PrivateRoute(AddReview, props)}/>
         <Modal />
       </div>
     </Provider>
