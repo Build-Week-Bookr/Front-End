@@ -22,7 +22,6 @@ export function ReviewCard(props) {
             fetchUser(userId);
         }
     }, []);
-    debugger
 
     return (
         <StyledReviewCard>
