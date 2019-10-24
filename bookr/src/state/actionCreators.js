@@ -1,5 +1,6 @@
 import * as types from '../state/actionTypes';
 import axios from 'axios';
+import React from 'react';
 import axiosWithAuth from "../axios";
 
 // Forms:
@@ -61,10 +62,11 @@ export const logIn = logUser => dispatch => {
 		dispatch(logInUser(res.data.user))
 		dispatch(setAuthedUserId(res.data.id));
 		alert('Login successful')
+		
 	})
 	.catch(error => {
 		console.log('Login Error', error)
-		alert(error.response.data.message)
+		alert(error.message)
 	})
 }
 
@@ -143,6 +145,29 @@ export const deleteBook = id => dispatch => {
 		.catch(err => {
 			debugger
 		});
+}
+
+export const addReview = (formValues, authedUserId, id) => dispatch => {
+// const dummyId = 1
+	const reviewToPost = {
+		book_id: id,
+		contents: formValues.contents,
+		rating: formValues.rating,
+		added_by: authedUserId
+	}
+
+	axiosWithAuth().post('https://bookr-eu.herokuapp.com/api/reviews/', reviewToPost)
+	.then(res => {
+		const reviews = res.data;
+		console.log('Add review', res)
+		dispatch({
+			type: types.ADD_REVIEW,
+			payload: reviews,
+		});
+	})
+	.catch(error => {
+		console.log('Error:', error)
+	})
 }
 
 export const fetchReviews = id => dispatch => {

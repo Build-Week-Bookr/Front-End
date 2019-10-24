@@ -78,6 +78,6 @@ export function NewBookForm(props){
 }
 
 export default connect(
-    state => state,
-    actionCreators
+	state => state,
+	actionCreators
 )(NewBookForm)

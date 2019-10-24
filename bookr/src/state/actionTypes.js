@@ -10,6 +10,8 @@ export const FETCH_BOOK = "FETCH_BOOK";
 export const CLEAR_BOOK = "CLEAR_BOOK";
 export const ADD_BOOK = "ADD_BOOK";
 export const DELETE_BOOK = "DELETE_BOOK";
+export const ADD_REVIEW = "ADD_REVIEW";
+export const DELETE_REVIEW = "DELETE_REVIEW"
 export const FETCH_REVIEWS = "FETCH_REVIEWS";
 export const CLEAR_REVIEWS = "CLEAR_REVIEWS";
 export const FETCH_USER = "FETCH_USER";
@@ -18,3 +20,5 @@ export const SET_AUTHED_USER_ID = "SET_AUTHED_USER_ID";
 // Modal:
 export const TRIGGER_MODAL = "TRIGGER_MODAL";
 export const KILL_MODAL = "KILL_MODAL";
+
+
