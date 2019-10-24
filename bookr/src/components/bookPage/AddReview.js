@@ -52,10 +52,10 @@ export function AddReview(props) {
 				<ReviewFormStyled>
 				{/* <Field name='rating' type='number' placeholder='rate from 1 to 5'/> */}
 				<StarRatingComponent 
+					onStarClick={onStarClick}
           name="rating" 
           starCount={5}
           value={rating}
-          onStarClick={onStarClick}
         />
 				</ReviewFormStyled>
 				<button type='submit'>Add Review</button>

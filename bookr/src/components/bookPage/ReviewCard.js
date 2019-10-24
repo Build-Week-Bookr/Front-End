@@ -29,14 +29,13 @@ export function ReviewCard(props) {
             {(!user && <h6>...</h6>) ||
                 <>
                     <p>"{reviewObj.contents}"</p>
-                    <p>{reviewObj.rating}</p>
+                    {/* <p>{reviewObj.rating}</p> */}
                     <h6>— {user.username}</h6>
                     <StarRatingComponent
-					// className="Star-Rating"
 					name="rating"
 					starCount={5}
 					editing={false}
-					value={props.rating}
+					value={reviewObj.rating}
 				/>
                 </>
             }
