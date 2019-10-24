@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import * as actionCreators from "../../state/actionCreators";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
@@ -66,9 +68,22 @@ const StyledBookCard = styled.div`
     }
 `;
 
-export default function BookCard(props) {
-    const { book } = props;
-    const starArray = [1, 2, 3, 4, 5];
+export function BookCard(props) {
+    const { book, reviews, fetchReviews } = props;
+    
+    useEffect(() => {
+        fetchReviews(book.id); 
+    }, [])
+    const generateStarArray = () => {
+        if (reviews && reviews[0].book_id === book.id) {
+            const averageRating = reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
+            const roundedAverageRating = Math.round(averageRating);
+            let starArray = [1, 2, 3, 4, 5];
+            console.log(book.id, reviews, averageRating, roundedAverageRating, starArray.slice(0, roundedAverageRating));
+            return starArray.slice(0, roundedAverageRating);
+        }
+    }
+    const starArray = generateStarArray();
 
     return (
         <StyledBookCard>
@@ -78,7 +93,7 @@ export default function BookCard(props) {
                         <img src={book.cover_image} alt="cover image" />
                     </div>
                     <div className="rating">
-                        {starArray.map(i => (
+                        {(!starArray && <h6>No rating yet!</h6>) || starArray.map(i => (
                             <img src={starImg} alt="star" key={i} />
                         ))}
                     </div>
@@ -92,3 +107,8 @@ export default function BookCard(props) {
         </StyledBookCard>
     )
 }
+
+export default connect(
+	state => ({reviews: state.reviews, fetchReviews: state.fetchReviews}),
+	actionCreators
+)(BookCard);

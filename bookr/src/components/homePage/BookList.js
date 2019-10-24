@@ -19,7 +19,7 @@ const StyledBookList = styled.div`
 `;
 
 export function BookList(props) {
-    const { books, fetchBooks, clearBook, clearReviews} = props;
+	const { books, fetchBooks, clearBook, clearReviews } = props;
 
 	useEffect(() => {
 		fetchBooks(props.history);
@@ -31,7 +31,7 @@ export function BookList(props) {
 		<>
 			<NewBookForm />
 			<StyledBookList>
-				{(books.length === 0 && <p>loading books...</p>) ||
+				{(books.length === 0) && <p>loading books...</p> ||
 					(books.length !== 0 && books.map(book => (
 						<BookCard book={book} key={book.id} />
 					)))}

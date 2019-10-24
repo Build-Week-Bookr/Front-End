@@ -81,11 +81,11 @@ export const fetchBooks = history => dispatch => {
 			});
 		})
 		.catch(err => {
-			if (err.response.status === 401) {
+			if (err.response && err.response.status === 401) {
 				alert("Your session has expired. Please log back in.");
 				history.push("/");
 			} else {
-				alert("fetchBooks reducer: " + err.message);
+				alert("fetchBooks actionCreator: " + err.message);
 			}
 		});
 };
@@ -99,7 +99,7 @@ export const fetchBook = id => dispatch => {
 			})
 		})
 		.catch(err => {
-			alert("fetchBook reducer: " + err.message);
+			alert("fetchBook actionCreator: " + err.message);
 		});
 };
 export const clearBook = () => {
@@ -125,7 +125,7 @@ export const addBook = (formValues, authedUserId) => dispatch => {
 			})
 		})
 		.catch(err => {
-			alert("addBook reducer: " + err.message);
+			alert("addBook actionCreator: " + err.message);
 		});
 }
 export const deleteBook = id => dispatch => {
@@ -143,7 +143,7 @@ export const deleteBook = id => dispatch => {
 			setTimeout(() => dispatch(killModal()), 3000);
 		})
 		.catch(err => {
-			alert("deleteBook reducer: " + err.message);
+			alert("deleteBook actionCreator: " + err.message);
 		});
 }
 
@@ -179,13 +179,13 @@ export const fetchReviews = id => dispatch => {
 			});
 		})
 		.catch(err => {
-			if (err.response.status === 404) {
+			if (err.response && err.response.status === 404) {
 				dispatch({
 					type: types.FETCH_REVIEWS,
 					payload: [],
 				});
 			} else {
-				alert("fetchReviews reducer: " + err.message);
+				alert("fetchReviews actionCreator: " + err.message);
 			}
 		});
 };
@@ -202,7 +202,7 @@ export const fetchUser = id => dispatch => {
 			});
 		})
 		.catch(err => {
-			alert("fetchUser reducer: " + err.message);
+			alert("fetchUser actionCreator: " + err.message);
 		})
 };
 
