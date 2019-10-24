@@ -59,8 +59,8 @@ export const logIn = logUser => dispatch => {
 		console.log('submitLogin', res)
 		console.log('Log in user', logUser)
 		localStorage.setItem('token', res.data.token)
-		dispatch(logInUser(res.data.user))
-		dispatch(setAuthedUserId(res.data.id));
+		dispatch(logInUser(res.data))
+		localStorage.setItem("authedUserId", res.data.id);
 		alert('Login successful')
 		
 	})
@@ -179,7 +179,9 @@ export const fetchReviews = id => dispatch => {
 			});
 		})
 		.catch(err => {
-			if (err.response && err.response.status === 404) {
+			if (err.response && err.response.status === 404) { 
+			// This here isn't an ideal solution by any means. But ideally, the backend
+			// would send back an empty array if there are no reviews, instead of throw an error! :P
 				dispatch({
 					type: types.FETCH_REVIEWS,
 					payload: [],
@@ -205,13 +207,6 @@ export const fetchUser = id => dispatch => {
 			alert("fetchUser actionCreator: " + err.message);
 		})
 };
-
-export const setAuthedUserId = id => { // Hmm... this seems kinda redundant!
-	return {
-		type: types.SET_AUTHED_USER_ID,
-		payload: id,
-	}
-}
 
 // Modal:
 export const triggerModal = message => {
