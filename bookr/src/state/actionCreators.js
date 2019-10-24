@@ -85,7 +85,7 @@ export const fetchBooks = history => dispatch => {
 				alert("Your session has expired. Please log back in.");
 				history.push("/");
 			} else {
-				alert(err.message);
+				alert("fetchBooks reducer: " + err.message);
 			}
 		});
 };
@@ -99,7 +99,7 @@ export const fetchBook = id => dispatch => {
 			})
 		})
 		.catch(err => {
-			alert(err.message);
+			alert("fetchBook reducer: " + err.message);
 		});
 };
 export const clearBook = () => {
@@ -125,7 +125,7 @@ export const addBook = (formValues, authedUserId) => dispatch => {
 			})
 		})
 		.catch(err => {
-			debugger
+			alert("addBook reducer: " + err.message);
 		});
 }
 export const deleteBook = id => dispatch => {
@@ -143,7 +143,7 @@ export const deleteBook = id => dispatch => {
 			setTimeout(() => dispatch(killModal()), 3000);
 		})
 		.catch(err => {
-			debugger
+			alert("deleteBook reducer: " + err.message);
 		});
 }
 
@@ -184,6 +184,8 @@ export const fetchReviews = id => dispatch => {
 					type: types.FETCH_REVIEWS,
 					payload: [],
 				});
+			} else {
+				alert("fetchReviews reducer: " + err.message);
 			}
 		});
 };
@@ -200,7 +202,7 @@ export const fetchUser = id => dispatch => {
 			});
 		})
 		.catch(err => {
-			// debugger
+			alert("fetchUser reducer: " + err.message);
 		})
 };
 
