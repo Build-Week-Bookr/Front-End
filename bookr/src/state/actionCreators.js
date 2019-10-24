@@ -145,6 +145,30 @@ export const deleteBook = id => dispatch => {
 		});
 }
 
+export const addReview = (formValues, authedUserId, id) => dispatch => {
+// const dummyId = 1
+	const reviewToPost = {
+		book_id: id,
+		contents: formValues.contents,
+		rating: formValues.rating,
+		added_by: authedUserId
+	}
+
+	axiosWithAuth().post('https://bookr-eu.herokuapp.com/api/reviews/', reviewToPost)
+	.then(res => {
+		const reviews = res.data;
+		console.log('Add review', res)
+		dispatch({
+			type: types.ADD_REVIEW,
+			payload: reviews,
+		});
+	})
+	.catch(error => {
+		console.log('Error:', error)
+	})
+}
+
+
 export const fetchReviews = id => dispatch => {
 	axiosWithAuth().get(`https://bookr-eu.herokuapp.com/api/reviews/book/${id}`)
 		.then(res => {

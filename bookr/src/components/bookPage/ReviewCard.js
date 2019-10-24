@@ -28,7 +28,8 @@ export function ReviewCard(props) {
             {(!user && <h6>...</h6>) ||
                 <>
                     <p>"{reviewObj.contents}"</p>
-                    <h6>— {user.username}</h6>
+                    <p>{reviewObj.rating}</p>
+                    {/* <h6>— {user.username}</h6> */}
                 </>
             }
         </StyledReviewCard>

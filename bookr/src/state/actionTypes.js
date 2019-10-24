@@ -10,6 +10,7 @@ export const FETCH_BOOK = "FETCH_BOOK";
 export const CLEAR_BOOK = "CLEAR_BOOK";
 export const ADD_BOOK = "ADD_BOOK";
 export const DELETE_BOOK = "DELETE_BOOK";
+export const ADD_REVIEW = "ADD_REVIEW";
 export const FETCH_REVIEWS = "FETCH_REVIEWS";
 export const CLEAR_REVIEWS = "CLEAR_REVIEWS";
 export const FETCH_USER = "FETCH_USER";
