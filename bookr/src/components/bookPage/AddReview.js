@@ -3,6 +3,7 @@ import * as actionCreators from '../../state/actionCreators';
 import { Form, Field, Formik} from 'formik';
 import { connect, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import StarRatingComponent from "react-star-rating-component";
 
 const ReviewFormStyled = styled.div`
 	.text-area {

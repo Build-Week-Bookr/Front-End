@@ -72,8 +72,6 @@ export function bookReducer(book = initialBook, action) {
 const initialReviews = [];
 export function reviewsReducer(reviews = initialReviews, action) {
     switch(action.type) {
-			case types.ADD_REVIEW:
-			return [...reviews, ...action.payload]	
 		case types.FETCH_REVIEWS:
 			return action.payload;
 		case types.ADD_REVIEW:
