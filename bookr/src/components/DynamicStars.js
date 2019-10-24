@@ -21,7 +21,7 @@ export function DynamicStars(props) {
         fetchReviews(bookId);
     }, []);
 
-    if (reviews && reviews[0].book_id === bookId && !starArray) {
+    if (reviews && reviews.length >= 1 && reviews[0].book_id === bookId && !starArray) {
         const averageRating = reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
         const roundedAverageRating = Math.round(averageRating);
         setStarArray([1, 2, 3, 4, 5].slice(0, roundedAverageRating));
