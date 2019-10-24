@@ -147,10 +147,10 @@ export const deleteBook = id => dispatch => {
 		});
 }
 
-export const addReview = (formValues, authedUserId, id) => dispatch => {
+export const addReview = (formValues, authedUserId, bookId) => dispatch => {
 // const dummyId = 1
 	const reviewToPost = {
-		book_id: id,
+		book_id: bookId,
 		contents: formValues.contents,
 		rating: formValues.rating,
 		added_by: authedUserId

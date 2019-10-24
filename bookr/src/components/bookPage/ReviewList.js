@@ -38,7 +38,7 @@ export function ReviewList(props) {
             {/* Otherwise, if _reviews_ is [], render 'There are no reviews,' etc., otherwise render the review list. */}
             <StyledReviewList>
                 <h4>Reviews</h4>
-								<AddReview />
+				<AddReview />
                 {(!reviews && <h5>Loading reviews...</h5>) ||
                     (reviews.length === 0 && <h5>There are no reviews yet for this book. Be the first!</h5>) ||
                         reviews.map(reviewObj => (
