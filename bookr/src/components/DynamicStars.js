@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 import styled from "styled-components";
@@ -15,21 +15,17 @@ const StyledDynamicStars = styled.div`
 
 export function DynamicStars(props) {
     const { bookId, reviews, fetchReviews } = props;
+    const [ starArray, setStarArray ] = useState(null);
 
     useEffect(() => {
-        fetchReviews(bookId); 
+        fetchReviews(bookId);
     }, []);
 
-    const generateStarArray = () => {
-        if (reviews && reviews[0].book_id === bookId) {
-            const averageRating = reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
-            const roundedAverageRating = Math.round(averageRating);
-            let starArray = [1, 2, 3, 4, 5];
-            console.log(bookId, reviews, averageRating, roundedAverageRating, starArray.slice(0, roundedAverageRating));
-            return starArray.slice(0, roundedAverageRating);
-        }
+    if (reviews && reviews[0].book_id === bookId && !starArray) {
+        const averageRating = reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
+        const roundedAverageRating = Math.round(averageRating);
+        setStarArray([1, 2, 3, 4, 5].slice(0, roundedAverageRating));
     }
-    const starArray = generateStarArray();
 
     return (
         <StyledDynamicStars className="stars">
