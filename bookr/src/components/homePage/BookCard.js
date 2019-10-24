@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-
-import starImg from "../../images/star.png";
+import DynamicStars from "../DynamicStars";
 
 const StyledBookCard = styled.div`
     width: 22rem;
@@ -35,14 +34,6 @@ const StyledBookCard = styled.div`
                 width: 100%;
             }
         }
-        .rating {
-            width: 100%;
-
-            img {
-                margin-left: 0.25rem;
-                margin-right: 0.25rem;
-            }
-        }
     }
 
     .text-box {
@@ -68,7 +59,6 @@ const StyledBookCard = styled.div`
 
 export default function BookCard(props) {
     const { book } = props;
-    const starArray = [1, 2, 3, 4, 5];
 
     return (
         <StyledBookCard>
@@ -77,11 +67,7 @@ export default function BookCard(props) {
                     <div className="img-box">
                         <img src={book.cover_image} alt="cover image" />
                     </div>
-                    <div className="rating">
-                        {starArray.map(i => (
-                            <img src={starImg} alt="star" key={i} />
-                        ))}
-                    </div>
+                    <DynamicStars bookId={book.id} />
                 </div>
                 <div className="text-box">
                     <h4>{book.title}</h4>

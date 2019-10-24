@@ -24,7 +24,7 @@ const StyledDeleteButton = styled.div`
 `;
 
 export function DeleteButton(props) {
-    const { book, deleteBook, history } = props;
+    const { book, deleteBook, history, authedUserId } = props;
 
     const onClick = book => {
         deleteBook(book.id);
@@ -32,9 +32,10 @@ export function DeleteButton(props) {
     }
 
     return (
-        <StyledDeleteButton onClick={book && (() => onClick(book))}>
-            <h6>Delete Book</h6>
-        </StyledDeleteButton>
+        book && authedUserId === book.added_by &&
+            <StyledDeleteButton onClick={book && (() => onClick(book))}>
+                <h6>Delete Book</h6>
+            </StyledDeleteButton>
     )
 }
 
