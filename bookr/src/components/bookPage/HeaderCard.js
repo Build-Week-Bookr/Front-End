@@ -4,7 +4,7 @@ import * as actionCreators from "../../state/actionCreators";
 import styled from "styled-components";
 import { Redirect } from "react-router-dom";
 
-import starImg from "../../images/star.png";
+import DynamicStars from "../DynamicStars";
 
 const StyledHeaderCard = styled.div`
     height: 20rem;
@@ -32,7 +32,7 @@ const StyledHeaderCard = styled.div`
                 height: 100%;
             }
         }
-        .rating {
+        .stars {
             height: 10%;
         }
     }
@@ -77,11 +77,7 @@ export function HeaderCard(props) {
                         <div className="img-box">
                             <img src={book.cover_image} alt="cover image" />
                         </div>
-                        <div className="rating">
-                        {starArray.map(i => (
-                            <img src={starImg} alt="star" key={i} />
-                        ))}
-                    </div>
+                        <DynamicStars bookId={bookId} />
                     </div>
                     <div className="text-box">
                         <h3>{book.title}</h3>
