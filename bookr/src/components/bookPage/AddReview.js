@@ -1,10 +1,8 @@
 import React from "react";
 import * as actionCreators from '../../state/actionCreators';
-import { formik, Form, Field, ErrorMessaage, Formik} from 'formik';
-import * as yup from 'yup';
+import { Form, Field, Formik} from 'formik';
 import { connect, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import StarRatingComponent from 'react-star-rating-component';
 
 const ReviewFormStyled = styled.div`
 	.text-area {
