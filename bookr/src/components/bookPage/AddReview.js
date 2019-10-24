@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import * as actionCreators from '../../state/actionCreators';
 import { formik, Form, Field, ErrorMessaage, Formik} from 'formik';
 import * as yup from 'yup';
@@ -19,10 +19,18 @@ const ReviewFormStyled = styled.div`
 `;
 
 export function AddReview(props) {
+
 	const {authedUserId, book, addReview, fetchReviews} = props;
-  
+
+	const [rating, setRating] = useState(0);
+
+	const onStarClick = (nextValue, prevValue, name) => {
+		setRating(nextValue)
+	}
+
+
 	const onSubmit = formValues => {
-		addReview(formValues, authedUserId, book.id);
+		addReview(formValues, authedUserId);
 		fetchReviews(props.history);
 		props.history.push(`/book/${book.id}`)
 	}
@@ -43,7 +51,13 @@ export function AddReview(props) {
 					<Field className='text-area' name='contents' type='text' placeholder='Add a review'/>
 				</ReviewFormStyled>
 				<ReviewFormStyled>
-				<Field name='rating' type='number' placeholder='rate from 1 to 5'/>
+				{/* <Field name='rating' type='number' placeholder='rate from 1 to 5'/> */}
+				<StarRatingComponent 
+          name="rating" 
+          starCount={5}
+          value={rating}
+          onStarClick={onStarClick}
+        />
 				</ReviewFormStyled>
 				<button type='submit'>Add Review</button>
 			</Form>

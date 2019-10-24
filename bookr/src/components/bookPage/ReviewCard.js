@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actionCreators from "../../state/actionCreators";
+import StarRatingComponent from 'react-star-rating-component';
 
 const StyledReviewCard = styled.div`
     display: flex;
@@ -30,6 +31,13 @@ export function ReviewCard(props) {
                     <p>"{reviewObj.contents}"</p>
                     <p>{reviewObj.rating}</p>
                     <h6>— {user.username}</h6>
+                    <StarRatingComponent
+					// className="Star-Rating"
+					name="rating"
+					starCount={5}
+					editing={false}
+					value={props.rating}
+				/>
                 </>
             }
         </StyledReviewCard>
