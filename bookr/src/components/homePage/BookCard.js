@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 import DynamicStars from "../DynamicStars";
 
 const StyledBookCard = styled.div`
-    width: 22rem;
-    height: 22rem;
+    width: 24rem;
+    height: 24rem;
     background: #F0F0F0;
     margin: 1rem;
     border-radius: 10px;
