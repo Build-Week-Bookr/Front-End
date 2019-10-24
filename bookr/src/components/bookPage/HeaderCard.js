@@ -69,7 +69,6 @@ const StyledHeaderCard = styled.div`
 
 export function HeaderCard(props) {
     const { bookId, book, fetchBook } = props;
-    const starArray = [1, 2, 3, 4, 5];
 
     useEffect(() => {
         fetchBook(bookId);
