@@ -48,7 +48,7 @@ table {
 }
 
 /* Overrides: */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, a {
 	font-family: 'Didact Gothic', sans-serif;
 	color: #05182a;
 }
@@ -68,7 +68,7 @@ h4 {
 h5 {
 	font-size: 1.5rem;
 }
-h6 {
+h6, a {
 	font-size: 1rem;
 }
 

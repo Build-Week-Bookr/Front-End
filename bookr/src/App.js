@@ -13,13 +13,15 @@ import BookList from './components/homePage/BookList';
 import BookPage from "./components/bookPage/BookPage";
 import NavBar from './components/navBar/NavBar';
 import Logout from './components/logout/Logout';
-import { sign } from 'crypto';
+import Modal from "./components/Modal";
 
 const rootReducer = combineReducers({
   books: reducers.booksReducer,
   book: reducers.bookReducer,
   reviews: reducers.reviewsReducer,
   user: reducers.userReducer,
+  authedUserId: reducers.authedUserIdReducer,
+  modalState: reducers.modalReducer,
   signUpValues: reducers.signUpReducer,
   logInValues: reducers.logInReducer
 })
@@ -43,6 +45,7 @@ function App() {
         <Route path="/books" render={props => PrivateRoute(BookList, props)} />
         <Route path="/book/:id" render={props => PrivateRoute(BookPage, props)} />
         <Route path="/logout" render={props => PrivateRoute(Logout, props)} />
+        <Modal />
         {/* <Route path="/menu" component={NavBar}/> */}
       </div>
     </Provider>

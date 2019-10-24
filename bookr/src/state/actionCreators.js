@@ -59,6 +59,7 @@ export const logIn = logUser => dispatch => {
 		console.log('Log in user', logUser)
 		localStorage.setItem('token', res.data.token)
 		dispatch(logInUser(res.data.user))
+		dispatch(setAuthedUserId(res.data.id));
 		alert('Login successful')
 	})
 	.catch(error => {
@@ -102,8 +103,7 @@ export const fetchBook = id => dispatch => {
 export const clearBook = () => {
 	return { type: types.CLEAR_BOOK }
 };
-export const addBook = formValues => dispatch => {
-	const dummyUserId = 1;
+export const addBook = (formValues, authedUserId) => dispatch => {
 	const bookToPost = {
 		title: formValues.title,
 		author: formValues.author,
@@ -111,7 +111,7 @@ export const addBook = formValues => dispatch => {
 		synopsis: formValues.synopsis,
 		cover_image: formValues.cover_image,
 		purchase_url: formValues.purchase_url,
-		added_by: dummyUserId,
+		added_by: authedUserId,
 	}
 
 	axiosWithAuth().post("https://bookr-eu.herokuapp.com/api/books", bookToPost)
@@ -134,6 +134,11 @@ export const deleteBook = id => dispatch => {
 				type: types.DELETE_BOOK,
 				payload: booksSansDeletedBook,
 			});
+
+			// Also, trigger modal...
+			dispatch(triggerModal("Book sucessfully deleted."));
+			// ... then, after a wait, kill it!
+			setTimeout(() => dispatch(killModal()), 3000);
 		})
 		.catch(err => {
 			debugger
@@ -174,3 +179,21 @@ export const fetchUser = id => dispatch => {
 			debugger
 		})
 };
+
+export const setAuthedUserId = id => { // Hmm... this seems kinda redundant!
+	return {
+		type: types.SET_AUTHED_USER_ID,
+		payload: id,
+	}
+}
+
+// Modal:
+export const triggerModal = message => {
+	return { 
+		type: types.TRIGGER_MODAL,
+		payload: message
+	}
+}
+export const killModal = () => {
+	return { type: types.KILL_MODAL }
+}

@@ -90,3 +90,32 @@ export function userReducer(user = initialUser, action) {
 			return user;
 	}
 }
+
+const initialAuthedUserId = null;
+export function authedUserIdReducer(authedUserId = initialAuthedUserId, action) {
+	switch(action.type) {
+		case types.SET_AUTHED_USER_ID:
+			return action.payload;
+		default:
+			return authedUserId;
+	}
+}
+
+// Modal state:
+const initialModalState = {
+	triggered: false,
+	message: "",
+}
+export function modalReducer(modalState = initialModalState, action) {
+	switch(action.type) {
+		case types.TRIGGER_MODAL:
+			return {
+				triggered: true,
+				message: action.payload,
+			}
+		case types.KILL_MODAL:
+			return initialModalState;
+		default:
+			return modalState;
+	}
+}

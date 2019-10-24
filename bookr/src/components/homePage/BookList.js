@@ -19,7 +19,7 @@ const StyledBookList = styled.div`
 `;
 
 export function BookList(props) {
-    const { books, fetchBooks, clearBook, clearReviews } = props;
+    const { books, fetchBooks, clearBook, clearReviews, killModal } = props;
 
     useEffect(() => {
         fetchBooks(props.history);
