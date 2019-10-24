@@ -18,8 +18,7 @@ const ReviewFormStyled = styled.div`
 `;
 
 export function AddReview(props) {
-	 const {authedUserId, book, addReview, fetchReviews} = props;
-	 debugger
+	const {authedUserId, book, addReview, fetchReviews} = props;
 	const onSubmit = formValues => {
 		addReview(formValues, authedUserId, book.id);
 		fetchReviews(props.history);
