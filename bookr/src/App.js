@@ -15,6 +15,7 @@ import NavBar from './components/navBar/NavBar';
 import Logout from './components/logout/Logout';
 import Modal from "./components/Modal";
 
+
 const rootReducer = combineReducers({
   books: reducers.booksReducer,
   book: reducers.bookReducer,
@@ -46,7 +47,6 @@ function App() {
         <Route path="/book/:id" render={props => PrivateRoute(BookPage, props)} />
         <Route path="/logout" render={props => PrivateRoute(Logout, props)} />
         <Modal />
-        {/* <Route path="/menu" component={NavBar}/> */}
       </div>
     </Provider>
   );

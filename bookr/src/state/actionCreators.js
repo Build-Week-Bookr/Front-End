@@ -1,5 +1,6 @@
 import * as types from '../state/actionTypes';
 import axios from 'axios';
+import React from 'react';
 import axiosWithAuth from "../axios";
 
 // Forms:
@@ -61,10 +62,11 @@ export const logIn = logUser => dispatch => {
 		dispatch(logInUser(res.data.user))
 		dispatch(setAuthedUserId(res.data.id));
 		alert('Login successful')
+		
 	})
 	.catch(error => {
 		console.log('Login Error', error)
-		alert(error.response.data.message)
+		alert(error.message)
 	})
 }
 
@@ -167,7 +169,6 @@ export const addReview = (formValues, authedUserId, id) => dispatch => {
 		console.log('Error:', error)
 	})
 }
-
 
 export const fetchReviews = id => dispatch => {
 	axiosWithAuth().get(`https://bookr-eu.herokuapp.com/api/reviews/book/${id}`)

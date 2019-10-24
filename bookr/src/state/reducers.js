@@ -76,6 +76,8 @@ export function reviewsReducer(reviews = initialReviews, action) {
 			return [...reviews, ...action.payload]	
 		case types.FETCH_REVIEWS:
 			return action.payload;
+		case types.ADD_REVIEW:
+			return [...reviews, ...action.payload]	
 		case types.CLEAR_REVIEWS:
 			return null;
         default:

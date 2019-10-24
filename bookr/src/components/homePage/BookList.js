@@ -19,28 +19,28 @@ const StyledBookList = styled.div`
 `;
 
 export function BookList(props) {
-    const { books, fetchBooks, clearBook, clearReviews, killModal } = props;
+    const { books, fetchBooks, clearBook, clearReviews} = props;
 
-    useEffect(() => {
-        fetchBooks(props.history);
-        clearBook();
-        clearReviews();
-    }, []);
+	useEffect(() => {
+		fetchBooks(props.history);
+		clearBook();
+		clearReviews();
+	}, []);
 
-    return (
-        <>
-            <NewBookForm />
-            <StyledBookList>
-                {(books.length === 0 && <p>loading books...</p>) ||
-                    (books.length !== 0 && books.map(book => (
-                        <BookCard book={book} key={book.id} />
-                    )))}
-            </StyledBookList>
-        </>
-    )
+	return (
+		<>
+			<NewBookForm />
+			<StyledBookList>
+				{(books.length === 0 && <p>loading books...</p>) ||
+					(books.length !== 0 && books.map(book => (
+						<BookCard book={book} key={book.id} />
+					)))}
+			</StyledBookList>
+		</>
+	)
 }
 
 export default connect(
-    state => state,
-    actionCreators
+	state => state,
+	actionCreators
 )(BookList);
