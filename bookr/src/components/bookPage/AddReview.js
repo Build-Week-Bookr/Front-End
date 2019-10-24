@@ -4,7 +4,6 @@ import { formik, Form, Field, ErrorMessaage, Formik} from 'formik';
 import * as yup from 'yup';
 import { connect, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import StarRatingComponent from 'react-star-rating-component';
 
 const ReviewFormStyled = styled.div`
 	.text-area {
@@ -15,15 +14,14 @@ const ReviewFormStyled = styled.div`
 	.star-rating {
 	font-size: 30px;
 	margin-left: 20px;
-}
-`
-
+	}
+`;
 
 export function AddReview(props) {
-	 const {authedUserId, id, addReview, fetchReviews} = props;
+	 const {authedUserId, book, addReview, fetchReviews} = props;
 	 debugger
 	const onSubmit = formValues => {
-		addReview(formValues, authedUserId, id);
+		addReview(formValues, authedUserId, book.id);
 		fetchReviews(props.history);
 }
 
