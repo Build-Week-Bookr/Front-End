@@ -31,7 +31,7 @@ export function DeleteButton(props) {
         history.push("/books");
     }
 
-    const authedUserId = localStorage.getItem("authedUserId");
+    const authedUserId = parseInt(localStorage.getItem("authedUserId"));
 
     return (
         book && authedUserId === book.added_by &&

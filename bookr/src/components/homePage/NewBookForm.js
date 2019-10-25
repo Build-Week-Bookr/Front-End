@@ -84,7 +84,7 @@ export function NewBookForm(props) {
         purchase_url: yup.string().url().required("*purchase url must be a URL"),
     });
 
-    const authedUserId = localStorage.getItem("authedUserId");
+    const authedUserId = parseInt(localStorage.getItem("authedUserId"));
     const onSubmit = formValues => {
         addBook(formValues, authedUserId);
         fetchBooks(props.history);

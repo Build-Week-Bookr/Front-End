@@ -54,7 +54,7 @@ export function AddReview(props) {
 
 
 
-	const authedUserId = localStorage.getItem("authedUserId");
+	const authedUserId = parseInt(localStorage.getItem("authedUserId"));
 	const onSubmit = (formValues) => {
 		addReview(formValues, authedUserId, book.id);
 		fetchReviews(book.id);

@@ -1,6 +1,5 @@
 import * as types from '../state/actionTypes';
 import axios from 'axios';
-import React from 'react';
 import axiosWithAuth from "../axios";
 
 // Forms:
