@@ -8,6 +8,16 @@ import { NavLink } from 'react-router-dom';
 
 import ReviewCard from "./ReviewCard";
 
+const AddReviewButtonStyled = styled.button`
+	padding: 10px;
+	width: 20%;
+	border-radius: 5px;
+	background-color: #23374d;
+	color: white;
+	margin-top: 20px;
+	border-width: 0.5px;
+`;
+
 const StyledReviewList = styled.div`
     min-height: 20%;
     background: #F0F0F0;
@@ -45,7 +55,7 @@ export function ReviewList(props) {
 					reviews.map(reviewObj => (
 						<ReviewCard reviewObj={reviewObj} key={reviewObj.id} />
 					))}
-					 <NavLink to={`/book/${bookId}/addReview`}><button>Add a review</button></NavLink>
+					 <NavLink to={`/book/${bookId}/addReview`}><AddReviewButtonStyled>Add a review</AddReviewButtonStyled></NavLink>
 			</StyledReviewList>
 		</>
 	)

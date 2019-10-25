@@ -5,11 +5,36 @@ import { connect, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import StarRatingComponent from "react-star-rating-component";
 
+const AddReviewContainerStyled = styled.div`
+	background-color: rgb(223, 223, 223);
+	height: 100vh;
+	`;
+
+const AddReviewButtonStyled = styled.button`
+	padding: 10px;
+	width: 20%;
+	border-radius: 5px;
+	background-color: #23374d;
+	color: white;
+	margin-top: 20px;
+	border-width: 0.5px;
+`;
+
+const ReviewFormTitleStyled = styled.h4`
+	padding-top: 50px;
+`
+
+
 const ReviewFormStyled = styled.div`
 	.text-area {
 	  width:400px;
 		height:200px;
-		text-align:start;
+		text-align: center;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		border-radius: 5px;
+		border-width: 1px;
+
 	}
 	.star-rating {
 	font-size: 30px;
@@ -27,8 +52,10 @@ export function AddReview(props) {
 		setRating(nextValue)
 	}
 
+
+
 	const authedUserId = localStorage.getItem("authedUserId");
-	const onSubmit = formValues => {
+	const onSubmit = (formValues) => {
 		addReview(formValues, authedUserId, book.id);
 		fetchReviews(book.id);
 		props.history.push(`/book/${book.id}`)
@@ -37,31 +64,34 @@ export function AddReview(props) {
 
 
 	return (
+		<AddReviewContainerStyled>
 		<Formik
 		initialValues={{
 			contents: '',
-			rating: 0,
+			rating: 3,
 			
 		}}
 		onSubmit={onSubmit}
 		render={props => (
 			<Form>
+				<ReviewFormTitleStyled>Add A Review!</ReviewFormTitleStyled>
 				<ReviewFormStyled>
 					<Field className='text-area' name='contents' type='text' placeholder='Add a review'/>
 				</ReviewFormStyled>
 				<ReviewFormStyled>
 				{/* <Field name='rating' type='number' placeholder='rate from 1 to 5'/> */}
-				<StarRatingComponent 
+				<StarRatingComponent className='star-rating'
+					onStarClick={onStarClick}
           name="rating" 
           starCount={5}
           value={rating}
-          onStarClick={onStarClick}
         />
 				</ReviewFormStyled>
-				<button type='submit'>Add Review</button>
+				<AddReviewButtonStyled type='submit'>Add Review</AddReviewButtonStyled>
 			</Form>
 		)}
 		/>
+		</AddReviewContainerStyled>
 	)
 }
 
