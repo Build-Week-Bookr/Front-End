@@ -148,7 +148,6 @@ export const deleteBook = id => dispatch => {
 }
 
 export const addReview = (formValues, authedUserId, bookId) => dispatch => {
-	debugger
 	const reviewToPost = {
 		book_id: bookId,
 		contents: formValues.contents,
