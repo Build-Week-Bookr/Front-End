@@ -77,8 +77,8 @@ export function NewBookForm(props) {
         publisher: yup.string().required("*publisher required"),
         synopsis: yup.string().test(
             "synopsis",
-            "*synopsis must be at least 256 characters long",
-            value => value && value.toString().length >= 256
+            "*synopsis must be at least 30 characters long",
+            value => value && value.toString().length >= 30
         ),
         cover_image: yup.string().url().required("*cover image must be a URL"),
         purchase_url: yup.string().url().required("*purchase url must be a URL"),
